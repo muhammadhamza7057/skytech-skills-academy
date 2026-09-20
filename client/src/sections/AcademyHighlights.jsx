@@ -1,9 +1,9 @@
-import { BookOpen, Compass, Handshake, Target } from 'lucide-react'
+import { BookOpen, Clock3, Compass, Target } from 'lucide-react'
 import { highlights } from '../data/content'
 import FeatureCard from '../components/FeatureCard'
 import SectionHeading from '../components/SectionHeading'
 
-const icons = [BookOpen, Target, Compass, Handshake]
+const icons = [BookOpen, Target, Compass, Clock3]
 
 export default function AcademyHighlights() {
   return (
@@ -14,7 +14,7 @@ export default function AcademyHighlights() {
           title="Built for practical, career-ready learning"
           description="Skytech Skills Academy helps learners develop tools and communication skills that matter in studios, offices, and professional pathways."
         />
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((item, index) => (
             <FeatureCard
               key={item.title}

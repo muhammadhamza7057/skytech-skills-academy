@@ -9,9 +9,9 @@ export default function CourseCategories() {
         <SectionHeading
           eyebrow="Course Categories"
           title="Choose a path that matches your goals"
-          description="Explore focused learning tracks across engineering, technology, design, and English."
+          description="Explore focused learning tracks across IT, digital skills, web development, engineering, English, and IELTS."
         />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {categoryCards.map((card) => (
             <CategoryCard key={card.title} {...card} />
           ))}

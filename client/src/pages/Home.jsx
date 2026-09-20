@@ -13,9 +13,9 @@ import WhyChooseSkytech from '../sections/WhyChooseSkytech'
 
 export default function Home() {
   usePageSEO({
-    title: 'Professional IT & Engineering Courses',
+    title: 'Professional IT & Engineering Courses in Dargai',
     description:
-      'Skytech Skills Academy offers practical short courses in AutoCAD, Revit, web development, graphic design, spoken English, and IELTS.',
+      'Skytech Skills Academy in Dargai, Malakand offers practical short courses in AutoCAD, Revit, web development, graphic design, and IELTS. 4+ years of experience.',
     path: '/',
   })
 

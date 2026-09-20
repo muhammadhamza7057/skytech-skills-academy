@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 
 @theme {
   --color-navy: #0b1f3a;
@@ -11,8 +12,8 @@
   --color-ink: #172033;
   --color-muted: #64748b;
   --color-border: #e2e8f0;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -21,7 +22,7 @@
   }
 
   body {
-    @apply bg-white font-sans text-ink antialiased;
+    @apply bg-white font-sans text-[15px] leading-relaxed text-ink antialiased sm:text-base;
     overflow-x: hidden;
   }
 
@@ -37,27 +38,128 @@
   h1,
   h2,
   h3 {
-    @apply text-balance;
+    @apply font-display text-balance tracking-tight text-navy;
   }
 
   p {
     @apply text-pretty;
   }
+
+  .leaflet-container {
+    width: 100%;
+    height: 100%;
+    font: inherit;
+    z-index: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
-@layer utilities {
+@layer components {
   .container-sky {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-8 xl:px-10;
   }
 
   .section-pad {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-14 sm:py-20 lg:py-24;
   }
 
-  .text-gradient-navy {
-    background: linear-gradient(135deg, #0b1f3a 0%, #1557a6 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* Primary CTA = accent red */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-[15px] font-semibold text-white shadow-sm shadow-accent/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue disabled:pointer-events-none disabled:opacity-60;
+  }
+
+  /* Secondary = navy filled */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-navy px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue disabled:pointer-events-none disabled:opacity-60;
+  }
+
+  /* Outline */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-white px-6 py-3.5 text-[15px] font-semibold text-navy transition-all duration-200 hover:border-navy/20 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue disabled:pointer-events-none disabled:opacity-60;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-[15px] font-semibold text-white shadow-sm shadow-accent/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue disabled:pointer-events-none disabled:opacity-60;
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/35 bg-white/10 px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:pointer-events-none disabled:opacity-60;
+  }
+
+  .btn-blue {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-blue px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue disabled:pointer-events-none disabled:opacity-60;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-border bg-white px-3.5 py-3 text-[15px] text-ink transition-colors placeholder:text-muted focus:border-blue;
+  }
+
+  .card-surface {
+    @apply rounded-xl border border-border bg-white shadow-sm shadow-navy/[0.03];
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-navy/5;
+  }
+}
+
+@layer utilities {
+  .fade-up {
+    animation: fadeUp 0.65s ease-out both;
+  }
+
+  .text-eyebrow {
+    @apply text-xs font-semibold tracking-[0.16em] text-blue uppercase sm:text-[13px];
+  }
+
+  .text-section-title {
+    @apply font-display text-[1.75rem] font-bold leading-tight tracking-tight text-navy sm:text-4xl lg:text-[2.5rem];
+  }
+
+  .text-section-desc {
+    @apply text-[15px] leading-relaxed text-muted sm:text-base lg:text-[17px] lg:leading-[1.65];
+  }
+
+  .text-card-title {
+    @apply font-display text-lg font-semibold text-navy sm:text-xl;
+  }
+
+  .text-card-desc {
+    @apply text-sm leading-relaxed text-muted sm:text-[15px];
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

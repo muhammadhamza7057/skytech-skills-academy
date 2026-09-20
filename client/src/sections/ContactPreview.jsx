@@ -1,13 +1,35 @@
-import { Link } from 'react-router-dom'
-import { Clock3, Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import { academyInfo } from '../data/content'
 import SectionHeading from '../components/SectionHeading'
+import Button from '../components/Button'
+import { WhatsAppIcon } from '../components/BrandIcons'
 
 const items = [
-  { icon: Phone, label: 'Phone', value: academyInfo.phone },
-  { icon: Mail, label: 'Email', value: academyInfo.email },
-  { icon: MapPin, label: 'Address', value: academyInfo.address },
-  { icon: Clock3, label: 'Opening Hours', value: academyInfo.hours },
+  {
+    icon: Phone,
+    label: 'Phone',
+    value: academyInfo.phone,
+    href: academyInfo.phoneHref,
+  },
+  {
+    icon: WhatsAppIcon,
+    label: 'WhatsApp',
+    value: academyInfo.whatsapp,
+    href: academyInfo.whatsappHref,
+    external: true,
+  },
+  {
+    icon: Mail,
+    label: 'Email',
+    value: academyInfo.email,
+    href: academyInfo.emailHref,
+  },
+  {
+    icon: MapPin,
+    label: 'Location',
+    value: academyInfo.address,
+    href: '/about#location',
+  },
 ]
 
 export default function ContactPreview() {
@@ -17,25 +39,42 @@ export default function ContactPreview() {
         <SectionHeading
           eyebrow="Contact"
           title="Let’s talk about your learning path"
-          description="Reach out for course guidance, enrollment questions, or general information. Contact details will be updated as the academy finalizes its public channels."
+          description="Call, WhatsApp, or visit us in Dargai for course guidance and enrollment support."
         />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map(({ icon: Icon, label, value }) => (
-            <div key={label} className="rounded-xl border border-border p-5">
-              <Icon size={18} className="text-blue" aria-hidden="true" />
-              <p className="mt-3 text-xs font-bold uppercase tracking-[0.14em] text-muted">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map(({ icon: Icon, label, value, href, external }) => (
+            <a
+              key={label}
+              href={href}
+              target={external ? '_blank' : undefined}
+              rel={external ? 'noopener noreferrer' : undefined}
+              className="card-surface card-hover p-5 sm:p-6"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-surface text-blue">
+                <Icon size={20} aria-hidden="true" />
+              </span>
+              <p className="mt-4 text-[12px] font-semibold tracking-[0.12em] text-muted uppercase">
                 {label}
               </p>
-              <p className="mt-2 text-sm font-semibold text-navy">{value}</p>
-            </div>
+              <p className="mt-2 text-[15px] font-semibold leading-snug text-navy sm:text-base">
+                {value}
+              </p>
+            </a>
           ))}
         </div>
-        <Link
-          to="/contact"
-          className="mt-8 inline-flex rounded-md border border-border px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-surface"
-        >
-          Go to contact page
-        </Link>
+        <div className="mt-9 flex flex-col gap-3.5 sm:flex-row">
+          <Button to="/contact" variant="secondary">
+            Go to contact page
+          </Button>
+          <Button
+            href={academyInfo.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="outline"
+          >
+            WhatsApp Us
+          </Button>
+        </div>
       </div>
     </section>
   )

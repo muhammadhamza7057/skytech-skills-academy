@@ -13,33 +13,35 @@ export default function EnglishIELTS() {
           align="center"
           className="mx-auto"
         />
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
-            <h3 className="font-display text-2xl font-semibold text-navy">English</h3>
-            <p className="mt-2 text-sm text-muted">
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="card-surface p-6 sm:p-8">
+            <h3 className="font-display text-2xl font-semibold text-navy sm:text-[1.75rem]">
+              English
+            </h3>
+            <p className="mt-2 text-[15px] text-muted sm:text-base">
               Build fluency and confidence for conversation, study, and workplace communication.
             </p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {englishFeatures.english.map((item) => (
                 <li
                   key={item}
-                  className="rounded-md bg-white px-4 py-3 text-sm font-semibold text-navy shadow-sm shadow-navy/5"
+                  className="rounded-lg bg-surface px-4 py-3.5 text-sm font-semibold text-navy sm:text-[15px]"
                 >
                   {item}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="rounded-xl border border-border bg-navy p-6 text-white sm:p-8">
-            <h3 className="font-display text-2xl font-semibold">IELTS</h3>
-            <p className="mt-2 text-sm text-white/70">
+          <div className="rounded-xl border border-navy bg-navy p-6 text-white sm:p-8">
+            <h3 className="font-display text-2xl font-semibold sm:text-[1.75rem]">IELTS</h3>
+            <p className="mt-2 text-[15px] text-white/75 sm:text-base">
               Practice Reading, Writing, Listening, and Speaking with strategy-focused guidance.
             </p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {englishFeatures.ielts.map((item) => (
                 <li
                   key={item}
-                  className="rounded-md bg-white/10 px-4 py-3 text-sm font-semibold text-white"
+                  className="rounded-lg bg-white/10 px-4 py-3.5 text-sm font-semibold text-white sm:text-[15px]"
                 >
                   {item}
                 </li>
@@ -47,11 +49,8 @@ export default function EnglishIELTS() {
             </ul>
           </div>
         </div>
-        <div className="mt-8 text-center">
-          <Link
-            to="/courses?category=English%20%26%20IELTS"
-            className="inline-flex rounded-md border border-border px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-surface"
-          >
+        <div className="mt-9 text-center">
+          <Link to="/courses?category=English%20%26%20IELTS" className="btn-outline">
             Explore English & IELTS courses
           </Link>
         </div>

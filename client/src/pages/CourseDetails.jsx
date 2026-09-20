@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import Breadcrumb from '../components/Breadcrumb'
+import Button from '../components/Button'
 import FAQ from '../components/FAQ'
 import { getCourseBySlug } from '../data/courses'
 import { usePageSEO } from '../hooks/usePageSEO'
@@ -26,10 +27,7 @@ export default function CourseDetails() {
         <p className="mt-3 text-muted">
           The course you are looking for does not exist or may have been moved.
         </p>
-        <Link
-          to="/courses"
-          className="mt-6 inline-flex rounded-md bg-navy px-5 py-3 text-sm font-bold text-white"
-        >
+        <Link to="/courses" className="btn-primary mt-6">
           Back to Courses
         </Link>
       </div>
@@ -59,28 +57,22 @@ export default function CourseDetails() {
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue">
                 {course.category}
               </p>
-              <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-navy sm:text-5xl">
+              <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-navy sm:text-4xl lg:text-5xl">
                 {course.name}
               </h1>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base lg:text-lg">
                 {course.description}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  to={`/enroll?course=${course.slug}`}
-                  className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-bold text-white hover:bg-accent-dark"
-                >
+                <Button to={`/enroll?course=${course.slug}`} variant="primary">
                   Enroll in This Course
-                </Link>
-                <Link
-                  to="/courses"
-                  className="inline-flex items-center justify-center rounded-md border border-border px-6 py-3.5 text-sm font-bold text-navy hover:bg-white"
-                >
+                </Button>
+                <Button to="/courses" variant="outline">
                   Back to Courses
-                </Link>
+                </Button>
               </div>
             </div>
-            <div className="overflow-hidden rounded-xl">
+            <div className="overflow-hidden rounded-lg border border-border">
               <img
                 src={course.image}
                 alt={`${course.name} course cover`}

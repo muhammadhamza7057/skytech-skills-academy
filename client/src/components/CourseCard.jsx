@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Clock3 } from 'lucide-react'
+import { Clock3, Layers } from 'lucide-react'
+import Button from './Button'
 
 export default function CourseCard({ course }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white transition-shadow hover:shadow-lg hover:shadow-navy/5">
+    <article className="card-surface card-hover group flex h-full flex-col overflow-hidden">
       <Link to={`/course/${course.slug}`} className="block overflow-hidden">
         <img
           src={course.image}
@@ -12,33 +13,46 @@ export default function CourseCard({ course }) {
           loading="lazy"
         />
       </Link>
-      <div className="flex flex-1 flex-col p-5">
-        <p className="text-xs font-bold uppercase tracking-[0.14em] text-blue">
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <p className="text-[12px] font-semibold tracking-[0.12em] text-blue uppercase">
           {course.category}
         </p>
-        <h3 className="mt-2 font-display text-xl font-semibold text-navy">
-          <Link to={`/course/${course.slug}`} className="hover:text-blue">
+        <h3 className="text-card-title mt-2">
+          <Link to={`/course/${course.slug}`} className="transition-colors hover:text-blue">
             {course.name}
           </Link>
         </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
-          {course.shortDescription}
-        </p>
-        <div className="mt-4 flex items-center justify-between gap-3 border-t border-border pt-4">
-          <div>
-            <p className="text-sm font-bold text-navy">{course.fee}</p>
-            <p className="mt-1 inline-flex items-center gap-1 text-xs text-muted">
-              <Clock3 size={12} aria-hidden="true" />
-              {course.duration}
-            </p>
-          </div>
-          <Link
+        <p className="text-card-desc mt-2.5 flex-1">{course.shortDescription}</p>
+
+        <div className="mt-5 grid grid-cols-2 gap-2.5 border-t border-border pt-4 text-[13px] text-muted sm:text-sm">
+          <p className="inline-flex items-center gap-1.5">
+            <Clock3 size={14} aria-hidden="true" />
+            <span>{course.duration}</span>
+          </p>
+          <p className="inline-flex items-center gap-1.5">
+            <Layers size={14} aria-hidden="true" />
+            <span>{course.level}</span>
+          </p>
+          <p className="col-span-2 text-[15px] font-semibold text-navy sm:text-base">
+            {course.fee}
+          </p>
+        </div>
+
+        <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
+          <Button
             to={`/course/${course.slug}`}
-            className="inline-flex items-center gap-1 text-sm font-bold text-blue hover:text-navy"
+            variant="outline"
+            className="w-full flex-1 px-4 py-3 text-sm"
           >
-            Details
-            <ArrowUpRight size={14} aria-hidden="true" />
-          </Link>
+            View Details
+          </Button>
+          <Button
+            to={`/enroll?course=${course.slug}`}
+            variant="primary"
+            className="w-full flex-1 px-4 py-3 text-sm"
+          >
+            Enroll Now
+          </Button>
         </div>
       </div>
     </article>

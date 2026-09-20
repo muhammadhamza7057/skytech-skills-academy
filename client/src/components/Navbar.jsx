@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import logo from '../assets/logo.jpeg'
 import { cn } from '../utils/cn'
 
 const links = [
@@ -16,7 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
+    const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -29,51 +30,44 @@ export default function Navbar() {
     }
   }, [open])
 
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setOpen(false)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 border-b transition-colors duration-300',
+        'sticky top-0 z-50 border-b border-white/10 bg-navy transition-[box-shadow,background-color] duration-300',
         scrolled || open
-          ? 'border-border bg-white/95 backdrop-blur-md'
-          : 'border-transparent bg-navy'
+          ? 'bg-navy/95 shadow-lg shadow-navy-deep/40 backdrop-blur-md'
+          : 'shadow-none'
       )}
     >
-      <div className="container-sky flex h-16 items-center justify-between gap-4 lg:h-20">
+      <div className="container-sky grid h-16 grid-cols-[1fr_auto] items-center gap-3 lg:h-[76px] lg:grid-cols-[1fr_auto_1fr]">
         <Link
           to="/"
-          className="group flex min-w-0 items-center gap-2"
+          className="flex min-w-0 items-center"
           onClick={() => setOpen(false)}
+          aria-label="Skytech Skills Academy home"
         >
-          <span
-            className={cn(
-              'flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-sm font-extrabold tracking-wide text-white',
-              scrolled || open ? 'bg-navy' : 'bg-white/10'
-            )}
-            aria-hidden="true"
-          >
-            ST
-          </span>
-          <span className="min-w-0">
-            <span
-              className={cn(
-                'block truncate text-sm font-extrabold tracking-wide sm:text-base',
-                scrolled || open ? 'text-navy' : 'text-white'
-              )}
-            >
-              SKYTECH
-            </span>
-            <span
-              className={cn(
-                'block truncate text-[10px] font-semibold uppercase tracking-[0.14em] sm:text-xs',
-                scrolled || open ? 'text-muted' : 'text-white/70'
-              )}
-            >
-              Skills Academy
-            </span>
-          </span>
+          <img
+            src={logo}
+            alt="Skytech Skills Academy"
+            className="h-10 w-10 rounded-full object-cover object-center ring-1 ring-white/15 sm:h-11 sm:w-11 lg:h-12 lg:w-12"
+            width={48}
+            height={48}
+          />
+          <span className="sr-only">Skytech Skills Academy</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav
+          className="hidden items-center justify-center gap-1 lg:flex"
+          aria-label="Primary"
+        >
           {links.map((link) => (
             <NavLink
               key={link.to}
@@ -81,14 +75,10 @@ export default function Navbar() {
               end={link.to === '/'}
               className={({ isActive }) =>
                 cn(
-                  'rounded-md px-3 py-2 text-sm font-semibold transition-colors',
-                  scrolled
-                    ? isActive
-                      ? 'bg-surface text-navy'
-                      : 'text-ink/80 hover:bg-surface hover:text-navy'
-                    : isActive
-                      ? 'bg-white/10 text-white'
-                      : 'text-white/80 hover:bg-white/10 hover:text-white'
+                  'relative px-3.5 py-2 text-[15px] font-medium text-white/75 transition-colors duration-200 hover:text-white',
+                  isActive && 'text-white',
+                  isActive &&
+                    "after:absolute after:inset-x-3.5 after:bottom-0 after:h-0.5 after:rounded-full after:bg-white after:content-['']"
                 )
               }
             >
@@ -97,25 +87,17 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2">
           <Link
             to="/enroll"
-            className={cn(
-              'hidden rounded-md px-4 py-2.5 text-sm font-bold transition-colors sm:inline-flex',
-              scrolled || open
-                ? 'bg-accent text-white hover:bg-accent-dark'
-                : 'bg-accent text-white hover:bg-accent-dark'
-            )}
+            className="btn-primary hidden h-11 px-5 py-0 text-[14px] lg:inline-flex"
           >
             Enroll Now
           </Link>
 
           <button
             type="button"
-            className={cn(
-              'inline-flex items-center justify-center rounded-md p-2 lg:hidden',
-              scrolled || open ? 'text-navy' : 'text-white'
-            )}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -129,11 +111,17 @@ export default function Navbar() {
       <div
         id="mobile-menu"
         className={cn(
-          'border-t border-border bg-white lg:hidden',
-          open ? 'block' : 'hidden'
+          'overflow-hidden border-t border-white/10 bg-navy transition-[max-height,opacity] duration-300 ease-out lg:hidden',
+          open ? 'max-h-[32rem] opacity-100' : 'max-h-0 border-transparent opacity-0'
         )}
       >
-        <nav className="container-sky flex flex-col gap-1 py-4" aria-label="Mobile">
+        <nav
+          className={cn(
+            'container-sky flex flex-col gap-1 py-4',
+            open && 'animate-[menuIn_0.28s_ease-out]'
+          )}
+          aria-label="Mobile"
+        >
           {links.map((link) => (
             <NavLink
               key={link.to}
@@ -142,8 +130,10 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 cn(
-                  'rounded-md px-3 py-3 text-base font-semibold',
-                  isActive ? 'bg-surface text-navy' : 'text-ink hover:bg-surface'
+                  'rounded-lg px-3 py-3.5 text-base font-medium transition-colors',
+                  isActive
+                    ? 'bg-white/10 text-white'
+                    : 'text-white/80 hover:bg-white/5 hover:text-white'
                 )
               }
             >
@@ -153,7 +143,7 @@ export default function Navbar() {
           <Link
             to="/enroll"
             onClick={() => setOpen(false)}
-            className="mt-2 rounded-md bg-accent px-3 py-3 text-center text-base font-bold text-white hover:bg-accent-dark"
+            className="btn-primary mt-2 w-full"
           >
             Enroll Now
           </Link>

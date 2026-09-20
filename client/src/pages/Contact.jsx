@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import { CheckCircle2, Clock3, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { CheckCircle2, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import Breadcrumb from '../components/Breadcrumb'
+import Button from '../components/Button'
+import LocationMap from '../components/LocationMapLazy'
 import SectionHeading from '../components/SectionHeading'
 import { academyInfo } from '../data/content'
 import { usePageSEO } from '../hooks/usePageSEO'
 import { validateContact } from '../utils/validation'
-
-const inputClass =
-  'w-full rounded-md border border-border bg-white px-3 py-2.5 text-sm text-ink focus:border-blue'
+import { cn } from '../utils/cn'
 
 export default function Contact() {
   const [values, setValues] = useState({
@@ -23,7 +23,7 @@ export default function Contact() {
   usePageSEO({
     title: 'Contact',
     description:
-      'Contact Skytech Skills Academy for course guidance and enrollment questions. Placeholder contact details are shown until official channels are published.',
+      'Contact Skytech Skills Academy in Dargai, Malakand. Call +92 342 2421701 or email skytechskills@gmail.com for course guidance and enrollment.',
     path: '/contact',
   })
 
@@ -47,11 +47,32 @@ export default function Contact() {
   }
 
   const contactItems = [
-    { icon: Phone, label: 'Phone', value: academyInfo.phone },
-    { icon: MessageCircle, label: 'WhatsApp', value: academyInfo.whatsapp },
-    { icon: Mail, label: 'Email', value: academyInfo.email },
-    { icon: MapPin, label: 'Address', value: academyInfo.address },
-    { icon: Clock3, label: 'Opening Hours', value: academyInfo.hours },
+    {
+      icon: Phone,
+      label: 'Phone',
+      value: academyInfo.phone,
+      href: academyInfo.phoneHref,
+    },
+    {
+      icon: MessageCircle,
+      label: 'WhatsApp',
+      value: academyInfo.whatsapp,
+      href: academyInfo.whatsappHref,
+      external: true,
+    },
+    {
+      icon: Mail,
+      label: 'Email',
+      value: academyInfo.email,
+      href: academyInfo.emailHref,
+    },
+    {
+      icon: MapPin,
+      label: 'Address',
+      value: academyInfo.address,
+      href: '/about#location',
+      internal: true,
+    },
   ]
 
   return (
@@ -61,27 +82,53 @@ export default function Contact() {
         <SectionHeading
           eyebrow="Contact"
           title="Get in touch"
-          description="Send a message for course information or enrollment guidance. Official contact details will be published here when available."
+          description="Reach us for course information, enrollment guidance, or a visit to our academy in Dargai, Malakand."
         />
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <aside className="space-y-4">
-            {contactItems.map(({ icon: Icon, label, value }) => (
-              <div key={label} className="rounded-xl border border-border bg-white p-5">
-                <div className="flex items-start gap-3">
-                  <Icon size={18} className="mt-0.5 text-blue" aria-hidden="true" />
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted">
-                      {label}
-                    </p>
-                    <p className="mt-1 text-sm font-semibold text-navy">{value}</p>
-                  </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {contactItems.map(({ icon: Icon, label, value, href, external, internal }) => {
+            const content = (
+              <div className="flex h-full items-start gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-surface text-blue">
+                  <Icon size={18} aria-hidden="true" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[11px] font-semibold tracking-[0.12em] text-muted uppercase">
+                    {label}
+                  </p>
+                  <p className="mt-1 text-sm font-semibold break-words text-navy">{value}</p>
                 </div>
               </div>
-            ))}
-          </aside>
+            )
 
-          <div className="rounded-xl border border-border bg-white p-5 sm:p-8">
+            if (internal) {
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  className="card-surface p-5 transition-colors hover:border-blue/30"
+                >
+                  {content}
+                </a>
+              )
+            }
+
+            return (
+              <a
+                key={label}
+                href={href}
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noopener noreferrer' : undefined}
+                className="card-surface p-5 transition-colors hover:border-blue/30"
+              >
+                {content}
+              </a>
+            )
+          })}
+        </div>
+
+        <div className="mt-10 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="card-surface p-5 sm:p-8">
             {submitted ? (
               <div role="status">
                 <div className="flex items-start gap-3">
@@ -92,8 +139,18 @@ export default function Contact() {
                     </h2>
                     <p className="mt-2 text-sm leading-relaxed text-muted">
                       Thank you, {values.name}. This contact form is a frontend
-                      demonstration and has not been connected to a backend yet.
+                      demonstration and has not been connected to a backend yet. For a
+                      quick response, message us on WhatsApp.
                     </p>
+                    <Button
+                      href={academyInfo.whatsappHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variant="accent"
+                      className="mt-5"
+                    >
+                      Chat on WhatsApp
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -107,7 +164,7 @@ export default function Contact() {
                     Name <span className="text-accent">*</span>
                   </span>
                   <input
-                    className={`${inputClass} ${errors.name ? 'border-accent' : ''}`}
+                    className={cn('input-field', errors.name && 'border-accent')}
                     value={values.name}
                     onChange={(e) => update('name', e.target.value)}
                     autoComplete="name"
@@ -125,7 +182,7 @@ export default function Contact() {
                     </span>
                     <input
                       type="email"
-                      className={`${inputClass} ${errors.email ? 'border-accent' : ''}`}
+                      className={cn('input-field', errors.email && 'border-accent')}
                       value={values.email}
                       onChange={(e) => update('email', e.target.value)}
                       autoComplete="email"
@@ -141,7 +198,7 @@ export default function Contact() {
                       Phone <span className="text-accent">*</span>
                     </span>
                     <input
-                      className={`${inputClass} ${errors.phone ? 'border-accent' : ''}`}
+                      className={cn('input-field', errors.phone && 'border-accent')}
                       value={values.phone}
                       onChange={(e) => update('phone', e.target.value)}
                       autoComplete="tel"
@@ -158,7 +215,7 @@ export default function Contact() {
                     Subject <span className="text-accent">*</span>
                   </span>
                   <input
-                    className={`${inputClass} ${errors.subject ? 'border-accent' : ''}`}
+                    className={cn('input-field', errors.subject && 'border-accent')}
                     value={values.subject}
                     onChange={(e) => update('subject', e.target.value)}
                   />
@@ -174,7 +231,7 @@ export default function Contact() {
                   </span>
                   <textarea
                     rows={5}
-                    className={`${inputClass} ${errors.message ? 'border-accent' : ''}`}
+                    className={cn('input-field', errors.message && 'border-accent')}
                     value={values.message}
                     onChange={(e) => update('message', e.target.value)}
                   />
@@ -184,14 +241,29 @@ export default function Contact() {
                     </span>
                   ) : null}
                 </label>
-                <button
-                  type="submit"
-                  className="inline-flex rounded-md bg-navy px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-blue"
-                >
+                <button type="submit" className="btn-primary">
                   Send Message
                 </button>
               </form>
             )}
+          </div>
+
+          <div className="space-y-5">
+            <div>
+              <h2 className="font-display text-2xl font-semibold text-navy">Our location</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                {academyInfo.address}
+              </p>
+            </div>
+            <LocationMap heightClass="h-[280px] sm:h-[340px] lg:h-[380px]" />
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button href={academyInfo.whatsappHref} target="_blank" rel="noopener noreferrer" variant="accent">
+                WhatsApp Us
+              </Button>
+              <Button to="/enroll" variant="primary">
+                Enroll Now
+              </Button>
+            </div>
           </div>
         </div>
       </div>

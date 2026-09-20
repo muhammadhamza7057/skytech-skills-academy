@@ -29,8 +29,7 @@ function Field({
   )
 }
 
-const inputClass =
-  'w-full rounded-md border border-border bg-white px-3 py-2.5 text-sm text-ink focus:border-blue'
+const inputClass = 'input-field'
 const errorInputClass = 'border-accent'
 
 export default function EnrollmentForm({ defaultCourse = '' }) {
@@ -367,10 +366,7 @@ export default function EnrollmentForm({ defaultCourse = '' }) {
         </div>
       </section>
 
-      <button
-        type="submit"
-        className="inline-flex w-full items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-accent-dark sm:w-auto"
-      >
+      <button type="submit" className="btn-accent w-full sm:w-auto">
         Submit Enrollment
       </button>
     </form>

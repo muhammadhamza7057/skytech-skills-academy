@@ -11,36 +11,19 @@ export default function SectionHeading({
   return (
     <div
       className={cn(
-        'max-w-3xl',
+        'max-w-2xl lg:max-w-3xl',
         align === 'center' && 'mx-auto text-center',
         className
       )}
     >
       {eyebrow ? (
-        <p
-          className={cn(
-            'text-xs font-bold uppercase tracking-[0.18em]',
-            light ? 'text-white/60' : 'text-blue'
-          )}
-        >
-          {eyebrow}
-        </p>
+        <p className={cn('text-eyebrow', light && 'text-white/65')}>{eyebrow}</p>
       ) : null}
-      <h2
-        className={cn(
-          'mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl',
-          light ? 'text-white' : 'text-navy'
-        )}
-      >
+      <h2 className={cn('text-section-title mt-3', light && 'text-white')}>
         {title}
       </h2>
       {description ? (
-        <p
-          className={cn(
-            'mt-4 text-base leading-relaxed sm:text-lg',
-            light ? 'text-white/75' : 'text-muted'
-          )}
-        >
+        <p className={cn('text-section-desc mt-4', light && 'text-white/75')}>
           {description}
         </p>
       ) : null}

@@ -1,9 +1,9 @@
-import { Award, Layers, Route, Wrench } from 'lucide-react'
+import { Layers, MapPin, Route, Wrench } from 'lucide-react'
 import { whyChoose } from '../data/content'
 import FeatureCard from '../components/FeatureCard'
 import SectionHeading from '../components/SectionHeading'
 
-const icons = [Wrench, Layers, Route, Award]
+const icons = [Wrench, Layers, Route, MapPin]
 
 export default function WhyChooseSkytech() {
   return (

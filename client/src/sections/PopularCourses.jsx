@@ -15,14 +15,11 @@ export default function PopularCourses() {
             title="Courses learners explore most"
             description="A selection of high-demand programs across technical tools, development, design, and English."
           />
-          <Link
-            to="/courses"
-            className="inline-flex shrink-0 items-center justify-center rounded-md border border-border px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-surface"
-          >
+          <Link to="/courses" className="btn-outline shrink-0">
             View all courses
           </Link>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {popular.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}
