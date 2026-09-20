@@ -1,7 +1,6 @@
 import Hero from '../components/Hero'
 import { usePageSEO } from '../hooks/usePageSEO'
 import AcademyHighlights from '../sections/AcademyHighlights'
-import ContactPreview from '../sections/ContactPreview'
 import CourseCategories from '../sections/CourseCategories'
 import EngineeringArchitecture from '../sections/EngineeringArchitecture'
 import EnglishIELTS from '../sections/EnglishIELTS'
@@ -31,7 +30,6 @@ export default function Home() {
       <EnglishIELTS />
       <OurStoryPreview />
       <EnrollmentCTA />
-      <ContactPreview />
     </>
   )
 }

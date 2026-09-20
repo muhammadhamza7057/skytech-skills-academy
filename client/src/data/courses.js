@@ -305,7 +305,7 @@ export const courses = [
     level: 'Beginner to Intermediate',
     mode: 'On-campus / Hybrid',
     image:
-      'https://images.unsplash.com/photo-1498050108023-c8199c81cfe8?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&q=80',
     whatYouLearn: [
       'Semantic HTML structure',
       'Modern CSS layout and responsive design',
@@ -348,7 +348,7 @@ export const courses = [
     level: 'Beginner',
     mode: 'On-campus / Hybrid',
     image:
-      'https://images.unsplash.com/photo-1626785774573-4b7993143493?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=1200&q=80',
     whatYouLearn: [
       'Design principles and visual hierarchy',
       'Typography and color systems',
@@ -571,3 +571,6 @@ export function getPopularCourses() {
 export function getCoursesByCategory(category) {
   return courses.filter((course) => course.category === category)
 }
+
+export const COURSE_FALLBACK_IMAGE =
+  'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80'

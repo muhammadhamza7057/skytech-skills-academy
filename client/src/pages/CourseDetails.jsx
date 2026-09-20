@@ -1,13 +1,15 @@
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Breadcrumb from '../components/Breadcrumb'
 import Button from '../components/Button'
 import FAQ from '../components/FAQ'
-import { getCourseBySlug } from '../data/courses'
+import { COURSE_FALLBACK_IMAGE, getCourseBySlug } from '../data/courses'
 import { usePageSEO } from '../hooks/usePageSEO'
 
 export default function CourseDetails() {
   const { slug } = useParams()
   const course = getCourseBySlug(slug)
+  const [imgSrc, setImgSrc] = useState(course?.image)
 
   usePageSEO({
     title: course ? course.name : 'Course Not Found',
@@ -72,10 +74,11 @@ export default function CourseDetails() {
                 </Button>
               </div>
             </div>
-            <div className="overflow-hidden rounded-lg border border-border">
+            <div className="overflow-hidden rounded-xl border border-border shadow-xs bg-surface">
               <img
-                src={course.image}
+                src={imgSrc || COURSE_FALLBACK_IMAGE}
                 alt={`${course.name} course cover`}
+                onError={() => setImgSrc(COURSE_FALLBACK_IMAGE)}
                 className="aspect-[4/3] w-full object-cover"
               />
             </div>

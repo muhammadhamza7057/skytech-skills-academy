@@ -14,6 +14,9 @@ export const academyInfo = {
     'Dargai, Malakand, Khyber Pakhtunkhwa, Pakistan',
   ],
   experience: '4+ Years of Experience',
+  studentsTrained: '100+ Students Trained',
+  studentImpactStatement:
+    'Over 100+ students have been trained through our practical learning programs, with learners using their skills in professional environments and working toward their career goals.',
   hours: 'Contact us for class schedules and visiting hours',
   social: {
     tiktok: {
@@ -139,36 +142,82 @@ export const storyContent = {
   },
 }
 
+export const aboutImpactMetrics = [
+  {
+    metric: '4+',
+    label: 'Years of Experience',
+    description:
+      'Providing dedicated, career-oriented short courses to learners in Dargai, Malakand and surrounding areas.',
+  },
+  {
+    metric: '100+',
+    label: 'Students Trained',
+    description:
+      'Over 100+ students have developed usable skills through our practical programs, preparing for professional roles and academic growth.',
+  },
+  {
+    metric: 'Hands-On',
+    label: 'Skill Development',
+    description:
+      'Focused training centered on industry software, practical design tasks, real code, and communicative fluency.',
+  },
+  {
+    metric: 'Career-Ready',
+    label: 'Learning Pathways',
+    description:
+      'Structured step-by-step curricula that equip learners with tools they can confidently apply in offices and studios.',
+  },
+]
+
 export const aboutSections = [
   {
     title: 'Who We Are',
     description:
-      'Skytech Skills Academy is a professional learning center in Dargai, Malakand, focused on practical short courses in technology, engineering, design, and English communication.',
+      'Skytech Skills Academy is a professional learning center located in Dargai, Malakand. We focus on structured short courses in technology, engineering, design, and English communication designed to build career readiness.',
   },
   {
     title: 'Our Experience',
     description:
-      'With 4+ years of experience, we have built a steady approach to skills training — practical, structured, and grounded in the needs of learners preparing for real professional work.',
+      'With 4+ years of experience, we have established a grounded, practical teaching method tailored to the needs of students and young professionals seeking usable skills.',
   },
   {
     title: 'What We Teach',
     description:
-      'Our programs cover AutoCAD, Revit, 3D visualization tools, web and MERN development, graphic design, digital skills, spoken English, and IELTS preparation.',
+      'Our programs cover AutoCAD, Revit, 3Ds Max, SketchUp, Lumion, MERN stack web development, graphic design, digital marketing, office productivity, spoken English, and IELTS preparation.',
   },
   {
     title: 'Our Learning Approach',
     description:
-      'We emphasize guided practice, project-based exercises, and clear course structure so learners can build usable skills step by step.',
+      'We prioritize guided, project-based practice over theory alone. Every module connects software tools and speaking exercises directly to real-world tasks.',
   },
   {
     title: 'Why Practical Skills Matter',
     description:
-      'In today’s workplaces, tools and communication skills often determine readiness. Practical training helps bridge academic knowledge and professional application.',
+      'In today’s job market, technical software proficiency and clear communication are essential. Practical training bridges academic theory and professional workplace expectations.',
   },
   {
-    title: 'Our Commitment',
+    title: 'Student Impact & Career Focus',
     description:
-      'We are committed to delivering honest, structured, and career-focused learning experiences without exaggerated claims or empty promises.',
+      'Over 100+ students have completed our courses, going on to use their practical skills in professional environments, freelance projects, and university studies.',
+  },
+]
+
+export const learningEnvironmentFeatures = [
+  {
+    title: 'Dedicated Workstations',
+    description: 'Equipped computer lab environment designed for hands-on drafting, coding, and design practice.',
+  },
+  {
+    title: 'Instructor Mentorship',
+    description: 'Close guidance and feedback on exercises, project portfolios, and technical workflows.',
+  },
+  {
+    title: 'Project-Based Milestones',
+    description: 'Learners complete concrete assignments and portfolio pieces rather than just memorizing lectures.',
+  },
+  {
+    title: 'Supportive Atmosphere',
+    description: 'A focused, academic setting in Adnan Plaza welcoming beginners and advancing learners alike.',
   },
 ]
 
@@ -191,7 +240,7 @@ export const categoryCards = [
     title: 'Web Development',
     description: 'Frontend, backend, and MERN stack training for modern application building.',
     image:
-      'https://images.unsplash.com/photo-1498050108023-c8199c81cfe8?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=900&q=80',
     href: '/courses?category=Web%20%26%20IT',
   },
   {

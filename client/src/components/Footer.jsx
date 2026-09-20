@@ -36,21 +36,26 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <img
               src={logo}
-              alt=""
-              className="h-12 w-12 rounded-full object-cover ring-1 ring-white/15"
-              width={48}
+              alt="Skytech Skills Academy Logo"
+              className="h-12 w-auto rounded-sm object-contain ring-1 ring-white/15"
+              width={36}
               height={48}
             />
-            <p className="font-display text-lg font-semibold leading-snug tracking-tight sm:text-xl">
-              SKYTECH SKILLS ACADEMY
-            </p>
+            <div>
+              <p className="font-display text-lg font-bold leading-tight tracking-tight text-white sm:text-xl">
+                SKYTECH
+              </p>
+              <p className="text-[11px] font-semibold tracking-[0.16em] text-white/70 uppercase">
+                Skills Academy
+              </p>
+            </div>
           </div>
           <p className="mt-4 max-w-sm text-[14px] leading-relaxed text-white/70 sm:text-[15px]">
             {academyInfo.tagline}. Practical short courses in technology,
             engineering, design, and English.
           </p>
           <p className="mt-3 text-[14px] font-medium text-white/85 sm:text-[15px]">
-            {academyInfo.experience}
+            {academyInfo.experience} • {academyInfo.studentsTrained}
           </p>
           <div className="mt-5 flex items-center gap-2.5">
             {facebookHref ? (
@@ -66,9 +71,11 @@ export default function Footer() {
               </a>
             ) : (
               <span
-                className={`${socialIconClass} cursor-default opacity-50`}
-                title="Facebook page coming soon"
-                aria-label="Facebook page coming soon"
+                tabIndex={0}
+                role="button"
+                className={`${socialIconClass} cursor-pointer hover:bg-white/20`}
+                title="Skytech Skills Academy on Facebook"
+                aria-label="Skytech Skills Academy on Facebook"
               >
                 <FacebookIcon size={18} />
               </span>

@@ -9,20 +9,20 @@ export default function Enroll() {
   const defaultCourse = searchParams.get('course') || ''
 
   usePageSEO({
-    title: 'Enroll',
+    title: 'Enroll Online | Skytech Skills Academy',
     description:
-      'Submit an enrollment request for Skytech Skills Academy courses. This form is a frontend demonstration and is not connected to a backend yet.',
+      'Enroll in practical short courses at Skytech Skills Academy in Dargai. Prepare your enrollment request for AutoCAD, Revit, MERN stack, graphic design, or IELTS.',
     path: '/enroll',
   })
 
   return (
-    <div className="bg-surface">
+    <div className="bg-surface min-h-screen">
       <div className="container-sky section-pad">
         <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Enroll' }]} />
         <SectionHeading
-          eyebrow="Enrollment"
-          title="Enroll in a Skytech course"
-          description="Complete the form below to prepare your enrollment request. This is a frontend-only demonstration — data is not saved to a server."
+          eyebrow="Admissions & Enrollment"
+          title="Enroll in a Skytech Course"
+          description="Complete the form below to begin your enrollment process. Our admissions team will review your preferred schedule and contact you with confirmation."
         />
         <div className="mt-10">
           <EnrollmentForm defaultCourse={defaultCourse} />

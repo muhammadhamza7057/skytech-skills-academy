@@ -7,7 +7,7 @@ export default function MainLayout() {
   return (
     <div className="flex min-h-screen flex-col overflow-x-hidden">
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 pt-16 lg:pt-[76px]">
         <Outlet />
       </main>
       <Footer />

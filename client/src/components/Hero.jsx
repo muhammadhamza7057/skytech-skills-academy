@@ -27,22 +27,22 @@ export default function Hero() {
           <p className="text-[12px] font-semibold tracking-[0.18em] text-white/75 uppercase sm:text-[13px] lg:text-sm">
             SKYTECH SKILLS ACADEMY
           </p>
-          <h1 className="mt-4 font-display text-[2rem] font-bold leading-[1.12] text-white sm:text-[2.75rem] lg:text-[3.75rem] lg:leading-[1.08]">
+          <h1 className="mt-4 font-display text-[2.25rem] font-bold leading-[1.15] text-white sm:text-[3rem] sm:leading-[1.12] lg:text-[3.75rem] lg:leading-[1.08] xl:text-[4rem]">
             Learn Practical Skills.
-            <span className="mt-1.5 block">Build Your Career.</span>
+            <span className="mt-2 block text-white/95">Build Your Career.</span>
           </h1>
-          <p className="mt-5 max-w-xl text-[15px] leading-[1.65] text-white/85 sm:text-base lg:text-[18px] lg:leading-[1.6]">
+          <p className="mt-5 max-w-xl text-[16px] leading-[1.65] text-white/85 sm:text-[17px] lg:text-[18px] lg:leading-[1.6]">
             Professional short courses in technology, engineering, architecture,
             design, digital skills, and English.
           </p>
 
           <div className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:items-center">
-            <Button to="/courses" variant="blue" className="w-full sm:w-auto">
+            <Button to="/enroll" variant="primary" className="w-full sm:w-auto px-7 py-3.5 text-base">
+              Enroll Now
+            </Button>
+            <Button to="/courses" variant="ghostLight" className="w-full sm:w-auto px-7 py-3.5 text-base">
               Explore Courses
               <ArrowRight size={17} aria-hidden="true" />
-            </Button>
-            <Button to="/enroll" variant="ghostLight" className="w-full sm:w-auto">
-              Enroll Now
             </Button>
           </div>
 

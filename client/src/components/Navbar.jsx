@@ -41,31 +41,38 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 border-b border-white/10 bg-navy transition-[box-shadow,background-color] duration-300',
+        'fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-navy transition-[box-shadow,background-color] duration-300',
         scrolled || open
-          ? 'bg-navy/95 shadow-lg shadow-navy-deep/40 backdrop-blur-md'
+          ? 'bg-navy/98 shadow-lg shadow-navy-deep/40 backdrop-blur-md'
           : 'shadow-none'
       )}
     >
-      <div className="container-sky grid h-16 grid-cols-[1fr_auto] items-center gap-3 lg:h-[76px] lg:grid-cols-[1fr_auto_1fr]">
+      <div className="container-sky grid h-16 grid-cols-[1fr_auto] items-center gap-3 lg:h-[76px] lg:grid-cols-[auto_1fr_auto]">
         <Link
           to="/"
-          className="flex min-w-0 items-center"
+          className="flex min-w-0 items-center gap-3"
           onClick={() => setOpen(false)}
           aria-label="Skytech Skills Academy home"
         >
           <img
             src={logo}
-            alt="Skytech Skills Academy"
-            className="h-10 w-10 rounded-full object-cover object-center ring-1 ring-white/15 sm:h-11 sm:w-11 lg:h-12 lg:w-12"
-            width={48}
+            alt="Skytech Skills Academy Logo"
+            className="h-[38px] w-auto rounded-sm object-contain ring-1 ring-white/15 sm:h-[44px] lg:h-[48px]"
+            width={36}
             height={48}
           />
-          <span className="sr-only">Skytech Skills Academy</span>
+          <div className="flex flex-col">
+            <span className="font-display text-[15px] font-bold tracking-tight text-white sm:text-[17px] leading-tight">
+              SKYTECH
+            </span>
+            <span className="hidden text-[10.5px] font-medium tracking-[0.16em] text-white/70 uppercase sm:inline-block">
+              Skills Academy
+            </span>
+          </div>
         </Link>
 
         <nav
-          className="hidden items-center justify-center gap-1 lg:flex"
+          className="hidden items-center justify-center gap-1.5 lg:flex"
           aria-label="Primary"
         >
           {links.map((link) => (
@@ -75,10 +82,10 @@ export default function Navbar() {
               end={link.to === '/'}
               className={({ isActive }) =>
                 cn(
-                  'relative px-3.5 py-2 text-[15px] font-medium text-white/75 transition-colors duration-200 hover:text-white',
-                  isActive && 'text-white',
+                  'relative px-3.5 py-2 text-[15px] font-medium text-white/80 transition-colors duration-200 hover:text-white',
+                  isActive && 'font-semibold text-white',
                   isActive &&
-                    "after:absolute after:inset-x-3.5 after:bottom-0 after:h-0.5 after:rounded-full after:bg-white after:content-['']"
+                    "after:absolute after:inset-x-3 after:-bottom-[10px] after:h-[2.5px] after:rounded-full after:bg-white after:content-['']"
                 )
               }
             >
@@ -130,9 +137,9 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 cn(
-                  'rounded-lg px-3 py-3.5 text-base font-medium transition-colors',
+                  'rounded-lg px-3.5 py-3 text-base font-medium transition-colors',
                   isActive
-                    ? 'bg-white/10 text-white'
+                    ? 'bg-white/15 font-semibold text-white'
                     : 'text-white/80 hover:bg-white/5 hover:text-white'
                 )
               }
@@ -143,7 +150,7 @@ export default function Navbar() {
           <Link
             to="/enroll"
             onClick={() => setOpen(false)}
-            className="btn-primary mt-2 w-full"
+            className="btn-primary mt-3 w-full py-3.5 text-center justify-center"
           >
             Enroll Now
           </Link>

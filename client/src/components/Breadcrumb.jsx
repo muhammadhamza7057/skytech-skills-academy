@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react'
 export default function Breadcrumb({ items }) {
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
-      <ol className="flex flex-wrap items-center gap-1 text-sm text-muted">
+      <ol className="m-0 flex list-none flex-wrap items-center gap-1.5 p-0 text-sm text-muted">
         {items.map((item, index) => {
           const isLast = index === items.length - 1
           return (
