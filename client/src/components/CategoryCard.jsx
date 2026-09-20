@@ -18,10 +18,10 @@ export default function CategoryCard({ title, description, image, href }) {
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/75 to-navy/25 transition-opacity duration-300 group-hover:via-navy/65" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy/85 to-navy/30 transition-opacity duration-300 group-hover:via-navy/75" />
       <div className="relative flex h-full min-h-[250px] flex-col justify-end p-5 text-white sm:min-h-[280px] sm:p-6">
-        <h3 className="font-display text-xl font-semibold sm:text-[1.35rem]">{title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-white/85 sm:text-[15px]">
+        <h3 className="font-display text-xl font-bold text-white sm:text-[1.35rem]">{title}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-white/90 sm:text-[15px]">
           {description}
         </p>
         <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white sm:text-[15px]">

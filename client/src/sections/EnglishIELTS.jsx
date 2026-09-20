@@ -33,7 +33,7 @@ export default function EnglishIELTS() {
             </ul>
           </div>
           <div className="rounded-xl border border-navy bg-navy p-6 text-white sm:p-8">
-            <h3 className="font-display text-2xl font-semibold sm:text-[1.75rem]">IELTS</h3>
+            <h3 className="font-display text-2xl font-semibold text-white sm:text-[1.75rem]">IELTS</h3>
             <p className="mt-2 text-[15px] text-white/75 sm:text-base">
               Practice Reading, Writing, Listening, and Speaking with strategy-focused guidance.
             </p>
