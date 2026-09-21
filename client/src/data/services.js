@@ -9,6 +9,15 @@ import {
   PenTool,
 } from 'lucide-react'
 
+import residentialHero from '../assets/residential_project_hero.webp'
+import sheet02 from '../assets/projects/residential-project/02.webp'
+import sheet14 from '../assets/projects/residential-project/14.webp'
+import img1 from '../assets/Image1.jpeg'
+import img2 from '../assets/Image 2.jpeg'
+import img3 from '../assets/Image 3.jpeg'
+import img4 from '../assets/Image 4.jpeg'
+import img8 from '../assets/Image 8.jpeg'
+
 export const architectureServices = [
   {
     id: 'architectural-design',
@@ -16,6 +25,8 @@ export const architectureServices = [
     shortDescription:
       'Comprehensive architectural concepts, functional spatial layouts, and professional design planning for modern residential and commercial structures.',
     icon: Building2,
+    image: residentialHero,
+    badge: '3D Spatial Planning',
     deliverables: [
       'Concept development',
       'Spatial planning',
@@ -29,6 +40,8 @@ export const architectureServices = [
     shortDescription:
       'Precise, to-scale 2D floor plans, working drawings, sections, and elevation details ready for review and site execution.',
     icon: Layout,
+    image: sheet02,
+    badge: 'Working Drawings',
     deliverables: [
       'Dimensional floor plans',
       'Sectional drawings',
@@ -42,6 +55,8 @@ export const architectureServices = [
     shortDescription:
       'Photorealistic 3D exterior and interior visualizations that bring blueprints to life with realistic lighting, textures, and environmental context.',
     icon: Maximize2,
+    image: img2,
+    badge: 'Photoreal Rendering',
     deliverables: [
       'Photorealistic exterior renders',
       'Day & night lighting views',
@@ -55,6 +70,8 @@ export const architectureServices = [
     shortDescription:
       'Thoughtfully planned interior spaces combining aesthetic harmony, ergonomic utility, lighting concepts, and practical material selections.',
     icon: Home,
+    image: img4,
+    badge: 'Master Suites & Living',
     deliverables: [
       'Space planning & layout',
       'Interior 3D concepts',
@@ -68,6 +85,8 @@ export const architectureServices = [
     shortDescription:
       'Striking building facade concepts and modern architectural treatments designed for durability, visual elegance, and structural character.',
     icon: Compass,
+    image: img1,
+    badge: 'Facade & Lighting',
     deliverables: [
       'Facade design & styling',
       'Boundary wall concepts',
@@ -81,6 +100,8 @@ export const architectureServices = [
     shortDescription:
       'Holistic building layout design taking into account site orientation, natural airflow, daylight efficiency, and zoning practicality.',
     icon: PenTool,
+    image: img8,
+    badge: 'Zoning & Master Plan',
     deliverables: [
       'Site layout analysis',
       'Zoning & circulation flow',
@@ -94,6 +115,8 @@ export const architectureServices = [
     shortDescription:
       'Industry-standard technical CAD drafting, digitization of manual sketches, sheet composition, and layer-organized DWG documentation.',
     icon: FileText,
+    image: sheet14,
+    badge: 'Technical CAD Sheets',
     deliverables: [
       'CAD conversion & drafting',
       'Detail drafting & schedules',
@@ -107,6 +130,8 @@ export const architectureServices = [
     shortDescription:
       'Accurate geometric 3D models developed in 3Ds Max, Revit, and SketchUp suitable for engineering review, visualization, and client walkthroughs.',
     icon: Layers,
+    image: img3,
+    badge: 'Volumetric Massing',
     deliverables: [
       'Detailed volumetric models',
       'BIM-aligned component models',

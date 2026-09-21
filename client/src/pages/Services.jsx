@@ -11,12 +11,15 @@ import ProjectGallery from '../components/ProjectGallery'
 import CampusesSection from '../components/CampusesSection'
 import { usePageSEO } from '../hooks/usePageSEO'
 import { useStaggerCards, useScrollReveal } from '../utils/motion'
+import residentialHero from '../assets/residential_project_hero.webp'
 import {
   CheckCircle2,
   ArrowRight,
   MessageSquare,
   Sparkles,
   ShieldCheck,
+  FileCheck2,
+  Maximize2,
 } from 'lucide-react'
 
 export default function Services() {
@@ -80,9 +83,10 @@ export default function Services() {
                 <MessageSquare className="w-4 h-4" />
                 Discuss Your Project on WhatsApp
               </a>
-              <a href="#portfolio" className="btn-ghost-light">
-                Explore Portfolio (9 Projects)
-              </a>
+              <Link to="/projects" className="btn-ghost-light">
+                <span>Explore Project Portfolio</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
 
             {/* Quick Proof Badges */}
@@ -116,6 +120,81 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Featured Architectural Project Case Study Spotlight Banner */}
+      <section className="py-12 bg-surface border-b border-border">
+        <div className="container-sky">
+          <div className="relative rounded-2xl bg-white border border-border hover:border-blue/40 shadow-sm overflow-hidden p-6 sm:p-8 lg:p-10 transition-all duration-300">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Image Preview */}
+              <div className="lg:col-span-5 relative group overflow-hidden rounded-xl bg-slate-900 aspect-[16/10]">
+                <img
+                  src={residentialHero}
+                  alt="Featured Residential Architectural Project 3D Visualization"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3 left-3 bg-navy/90 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-md border border-white/20 flex items-center gap-1.5">
+                  <FileCheck2 className="w-3.5 h-3.5 text-blue-light" />
+                  Featured Technical Case Study
+                </div>
+              </div>
+
+              {/* Information & Links */}
+              <div className="lg:col-span-7 flex flex-col justify-between">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-blue font-semibold mb-2">
+                    <span>35 Complete Sheets</span>
+                    <span>•</span>
+                    <span>3,750.50 Sq. Ft.</span>
+                    <span>•</span>
+                    <span>Residential Working Set</span>
+                  </div>
+
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-navy mb-3">
+                    Featured Case Study: Residential Architectural & Working Drawing Set
+                  </h2>
+
+                  <p className="text-sm sm:text-base text-muted leading-relaxed mb-6">
+                    A complete architectural design package created by Wajid Khan. Explore the full documentation including dimensional 2D floor plans, 4 exterior elevations, structural sections, complete electrical circuit layouts, and public health plumbing schemes.
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <span className="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-full font-medium">
+                      2D Architectural Plans
+                    </span>
+                    <span className="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-full font-medium">
+                      Exterior Elevations
+                    </span>
+                    <span className="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-full font-medium">
+                      Electrical Wiring Layouts
+                    </span>
+                    <span className="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-full font-medium">
+                      Public Health Plumbing
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-100">
+                  <Link
+                    to="/projects/residential-architectural-project"
+                    className="btn-primary text-sm py-2.5"
+                  >
+                    <Maximize2 className="w-4 h-4" />
+                    Open Case Study & Interactive Viewer
+                  </Link>
+                  <Link
+                    to="/projects"
+                    className="btn-secondary text-sm py-2.5"
+                  >
+                    <span>View All Portfolio Projects</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 8 Architecture Services Section */}
       <section className="section-pad bg-white">
         <div className="container-sky">
@@ -134,37 +213,50 @@ export default function Services() {
               return (
                 <div
                   key={service.id}
-                  className="service-detail-card card-surface card-hover p-6 sm:p-7 flex flex-col justify-between"
+                  className="service-detail-card group card-surface card-hover overflow-hidden flex flex-col justify-between"
                 >
-                  <div>
-                    <div className="w-12 h-12 rounded-xl bg-blue/10 border border-blue/20 flex items-center justify-center text-blue mb-5">
-                      <Icon className="w-6 h-6" />
+                  {/* Real Image Header */}
+                  <div className="relative aspect-[16/10] w-full bg-slate-100 overflow-hidden border-b border-border">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-2.5 left-2.5 bg-navy/90 backdrop-blur-sm text-white text-[10px] font-semibold px-2 py-0.5 rounded border border-white/20 flex items-center gap-1">
+                      <Icon className="w-3 h-3 text-blue-light" />
+                      <span>{service.badge || 'Professional'}</span>
                     </div>
-
-                    <h3 className="text-xl font-bold text-navy mb-3">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-sm text-muted leading-relaxed mb-6">
-                      {service.shortDescription}
-                    </p>
                   </div>
 
-                  <div>
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-navy/70 mb-3">
-                      Key Deliverables:
-                    </h4>
-                    <ul className="space-y-2 pt-1 border-t border-border">
-                      {service.deliverables.map((item, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-2 text-xs text-ink/80"
-                        >
-                          <CheckCircle2 className="w-3.5 h-3.5 text-blue flex-shrink-0 mt-0.5" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  {/* Body Content */}
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-lg font-bold text-navy mb-2.5 group-hover:text-blue transition-colors">
+                        {service.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-muted leading-relaxed mb-5">
+                        {service.shortDescription}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-[11px] font-semibold uppercase tracking-wider text-navy/70 mb-2.5">
+                        Key Deliverables:
+                      </h4>
+                      <ul className="space-y-1.5 pt-2 border-t border-border">
+                        {service.deliverables.map((item, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start gap-2 text-xs text-ink/80"
+                          >
+                            <CheckCircle2 className="w-3.5 h-3.5 text-blue flex-shrink-0 mt-0.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               )
@@ -214,13 +306,26 @@ export default function Services() {
       {/* Portfolio Showcase (9 Projects with Lightbox) */}
       <section id="portfolio" className="section-pad bg-white">
         <div className="container-sky">
-          <SectionHeading
-            eyebrow="Design Portfolio"
-            title="Selected Architectural Works"
-            description="Browse actual exterior renders, elevation studies, and spatial visualizations developed by the Skytech architectural team. Click any project to open full-resolution render details."
-          />
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+            <div>
+              <p className="text-eyebrow">Design Portfolio</p>
+              <h2 className="text-section-title mt-2 text-navy">
+                Selected Architectural Works
+              </h2>
+              <p className="text-section-desc mt-2">
+                Browse actual exterior renders, elevation studies, and spatial visualizations developed by the Skytech architectural team. Click any project to open full-resolution render details.
+              </p>
+            </div>
+            <Link
+              to="/projects"
+              className="btn-primary shrink-0 text-xs sm:text-sm"
+            >
+              <span>View Dedicated Portfolio Page</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
 
-          <div className="mt-12">
+          <div>
             <ProjectGallery />
           </div>
         </div>

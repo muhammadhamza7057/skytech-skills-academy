@@ -11,7 +11,10 @@ export default function ProjectGallery({ initialFilter = 'all', limit, showHeade
 
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === 'all') return true
-    return project.categoryFilter === activeFilter
+    return (
+      project.categoryFilter === activeFilter ||
+      (project.tags && project.tags.includes(activeFilter))
+    )
   })
 
   const displayedProjects = limit ? filteredProjects.slice(0, limit) : filteredProjects
