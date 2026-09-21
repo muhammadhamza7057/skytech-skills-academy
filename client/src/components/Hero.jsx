@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { ArrowRight, Briefcase, Clock3, GraduationCap, Users } from 'lucide-react'
+import { ArrowRight, Briefcase, Building2, Clock3, GraduationCap, Users } from 'lucide-react'
 import { trustIndicators } from '../data/content'
 import Button from './Button'
 import { animateHeroSignature } from '../utils/motion'
@@ -8,7 +8,8 @@ const iconMap = {
   'Practical Learning': GraduationCap,
   'Professional Instructors': Users,
   'Career-Focused Training': Briefcase,
-  '4+ Years of Experience': Clock3,
+  '7+ Years of Experience': Clock3,
+  '3 Campus Branches': Building2,
 }
 
 export default function Hero() {
@@ -70,8 +71,8 @@ export default function Hero() {
               data-hero-desc
               className="mt-5 max-w-xl text-[16px] leading-[1.65] text-white/85 sm:text-[17px] lg:text-[18px] lg:leading-[1.6]"
             >
-              Professional short courses in technology, engineering, architecture,
-              design, digital skills, and English.
+              Professional short courses in Technology, Engineering, Architecture,
+              Design, Digital Skills, and English.
             </p>
           </div>
 

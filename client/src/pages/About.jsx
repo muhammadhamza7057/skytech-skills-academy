@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import Breadcrumb from '../components/Breadcrumb'
 import Button from '../components/Button'
+import CampusesSection from '../components/CampusesSection'
 import CTASection from '../components/CTASection'
 import LocationMap from '../components/LocationMapLazy'
 import SectionHeading from '../components/SectionHeading'
@@ -182,15 +183,21 @@ export default function About() {
             />
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-muted sm:text-base">
               <p>
-                Skytech Skills Academy was founded in Dargai to solve this exact problem. Over the past four-plus years, we have provided structured, hands-on short courses that empower students to transition smoothly from learning to practical execution.
+                Skytech was founded in Dargai to solve this exact problem. Over the past 7+ years, we have provided structured, hands-on short courses that empower students to transition smoothly from learning to practical execution across 3 regional campus branches.
               </p>
               <p>
                 Our training focuses directly on the tools professionals use every day: AutoCAD for technical drafting, Revit for BIM documentation, React and Node.js for modern web applications, design software for branding, and communicative English for interviews and international tests like IELTS.
+              </p>
+              <p>
+                In parallel, Skytech operates a dedicated architectural design division delivering 2D drafting, 3D visualization, and structural planning for residential and commercial clients across Khyber Pakhtunkhwa.
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button to="/courses" variant="primary">
                 Explore Programs
+              </Button>
+              <Button to="/services" variant="outline">
+                Architecture Services
               </Button>
               <Button to="/our-story" variant="outline">
                 Read Our Story
@@ -308,7 +315,7 @@ export default function About() {
                   Student Impact & Outcomes
                 </span>
                 <h2 className="mt-3 font-display text-2xl font-bold text-navy sm:text-3xl lg:text-4xl">
-                  Empowering 100+ learners to reach their goals
+                  Empowering 1000+ learners across 3 regional branches
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-navy font-medium sm:text-lg">
                   {academyInfo.studentImpactStatement}
@@ -323,7 +330,7 @@ export default function About() {
                   <div className="flex items-start gap-2.5">
                     <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-blue" />
                     <span className="text-sm font-medium text-navy">
-                      Independent freelancing and digital client deliverables
+                      Independent freelancing and commercial client deliverables
                     </span>
                   </div>
                   <div className="flex items-start gap-2.5">
@@ -342,23 +349,23 @@ export default function About() {
               </div>
               <div className="rounded-xl border border-navy/10 bg-white p-6 shadow-sm">
                 <p className="text-xs font-semibold tracking-wider text-muted uppercase">
-                  Academy Summary
+                  Academy & Studio Summary
                 </p>
                 <div className="mt-4 space-y-4">
                   <div className="flex items-center justify-between border-b border-border pb-3">
                     <span className="text-sm text-muted">Established Experience</span>
-                    <span className="text-sm font-bold text-navy">4+ Years</span>
+                    <span className="text-sm font-bold text-navy">7+ Years</span>
                   </div>
                   <div className="flex items-center justify-between border-b border-border pb-3">
                     <span className="text-sm text-muted">Learners Trained</span>
-                    <span className="text-sm font-bold text-navy">100+ Students</span>
+                    <span className="text-sm font-bold text-navy">1000+ Students</span>
                   </div>
                   <div className="flex items-center justify-between border-b border-border pb-3">
-                    <span className="text-sm text-muted">Instruction Mode</span>
-                    <span className="text-sm font-bold text-navy">On-Campus / Practical</span>
+                    <span className="text-sm text-muted">Campus Branches</span>
+                    <span className="text-sm font-bold text-navy">3 Regional Locations</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted">Location</span>
+                    <span className="text-sm text-muted">Headquarters</span>
                     <span className="text-sm font-bold text-navy">Dargai, Malakand</span>
                   </div>
                 </div>
@@ -391,8 +398,11 @@ export default function About() {
         </div>
       </section>
 
+      {/* Regional Campuses */}
+      <CampusesSection lightBackground={false} />
+
       {/* Location / Map */}
-      <section id="location" className="section-pad scroll-mt-24 bg-white">
+      <section id="location" className="section-pad scroll-mt-24 bg-surface border-t border-border">
         <div ref={locationRef} className="container-sky grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
             <SectionHeading

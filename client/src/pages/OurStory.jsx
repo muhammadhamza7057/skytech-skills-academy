@@ -2,6 +2,9 @@ import { useRef, useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
 import CTASection from '../components/CTASection'
 import SectionHeading from '../components/SectionHeading'
+import DirectorSection from '../components/DirectorSection'
+import CampusesSection from '../components/CampusesSection'
+import mdImage from '../assets/MD.jpeg'
 import { storyContent } from '../data/content'
 import { usePageSEO } from '../hooks/usePageSEO'
 import { cn } from '../utils/cn'
@@ -12,9 +15,9 @@ export default function OurStory() {
   const content = storyContent[lang]
 
   usePageSEO({
-    title: 'Our Story | Skytech Skills Academy',
+    title: 'Our Story & Leadership | Skytech Skills Academy',
     description:
-      'Discover how Skytech Skills Academy bridges academic education and practical professional skills across technology, engineering, design, and English in Dargai.',
+      'The journey of Skytech Skills Academy & Architecture Services: 7+ years of hands-on training, 1000+ students trained, 3 regional campus branches, and architectural design practice led by Wajid Khan.',
     path: '/our-story',
   })
 
@@ -37,12 +40,12 @@ export default function OurStory() {
           />
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
-              eyebrow="Our Story"
-              title="From academic knowledge to practical capability"
-              description="A realistic story about closing the gap between theory-heavy classrooms and the software tools used in offices and studios every day."
+              eyebrow="Our Story & Origins"
+              title="From practical classroom training to regional architectural practice"
+              description="A grounded journey of closing the gap between academic theory, commercial design needs, and professional workplace standards across Khyber Pakhtunkhwa."
             />
             <div
-              className="inline-flex rounded-lg border border-border bg-white p-1 shadow-xs"
+              className="inline-flex rounded-lg border border-border bg-white p-1 shadow-xs self-start lg:self-auto"
               role="group"
               aria-label="Story language"
             >
@@ -74,22 +77,31 @@ export default function OurStory() {
       </div>
 
       <article ref={articleRef} className="container-sky section-pad">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          {/* Director / Studio Actual Image */}
           <div
             ref={storyImgRef}
-            className="relative min-h-[300px] overflow-hidden rounded-xl border border-border shadow-sm sm:min-h-[440px]"
+            className="relative min-h-[380px] overflow-hidden rounded-2xl border border-navy/20 shadow-xl sm:min-h-[480px] bg-navy"
           >
             <img
-              src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80"
-              alt="Professional learning environment with modern workspace at Skytech"
+              src={mdImage}
+              alt="Wajid Khan - Managing Director of Skytech"
               loading="lazy"
               decoding="async"
-              width={1200}
-              height={800}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out"
+              className="absolute inset-0 h-full w-full object-cover object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/25 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 p-4 bg-navy-deep/90 backdrop-blur-md rounded-xl border border-white/10 text-white">
+              <span className="text-xs font-semibold uppercase tracking-wider text-blue-light block mb-1">
+                Founder & Director
+              </span>
+              <p className="text-base sm:text-lg font-bold text-white">Wajid Khan</p>
+              <p className="text-xs text-white/75">
+                Lead Architectural Designer • 7+ Years Experience • 1000+ Students Mentored
+              </p>
+            </div>
           </div>
+
           <div
             lang={lang === 'ur' ? 'ur' : 'en'}
             dir={lang === 'ur' ? 'rtl' : 'ltr'}
@@ -115,6 +127,22 @@ export default function OurStory() {
                   {paragraph}
                 </p>
               ))}
+            </div>
+
+            {/* Quick Proof Pills */}
+            <div className="mt-8 grid grid-cols-3 gap-3 border-t border-border pt-6">
+              <div>
+                <span className="block font-display text-xl sm:text-2xl font-bold text-navy">7+ Years</span>
+                <span className="text-xs text-muted">Technical Instruction</span>
+              </div>
+              <div>
+                <span className="block font-display text-xl sm:text-2xl font-bold text-navy">1000+</span>
+                <span className="text-xs text-muted">Students Trained</span>
+              </div>
+              <div>
+                <span className="block font-display text-xl sm:text-2xl font-bold text-navy">3</span>
+                <span className="text-xs text-muted">Campus Branches</span>
+              </div>
             </div>
           </div>
         </div>
@@ -143,9 +171,15 @@ export default function OurStory() {
         </div>
       </article>
 
+      {/* Leadership Profile Section */}
+      <DirectorSection />
+
+      {/* Regional Campus Branches */}
+      <CampusesSection lightBackground={true} />
+
       <CTASection
         title="Ready to build your practical skills?"
-        description="Join learners in Dargai mastering technical software, modern development, design, and English."
+        description="Join learners across Dargai, Lower Dir, and Skhakot mastering technical software, architectural workflows, and English."
         primaryLabel="Explore Courses"
         primaryTo="/courses"
         secondaryLabel="Enroll Now"

@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom'
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, Phone, Building2 } from 'lucide-react'
 import logo from '../assets/logo.jpeg'
 import { academyInfo } from '../data/content'
+import { campuses } from '../data/campuses'
 import { FacebookIcon, TikTokIcon, WhatsAppIcon } from './BrandIcons'
 
 const quickLinks = [
   { to: '/', label: 'Home' },
   { to: '/courses', label: 'Courses' },
+  { to: '/services', label: 'Architecture Services' },
+  { to: '/services#portfolio', label: 'Project Portfolio' },
   { to: '/about', label: 'About' },
   { to: '/our-story', label: 'Our Story' },
   { to: '/contact', label: 'Contact' },
@@ -14,8 +17,8 @@ const quickLinks = [
 ]
 
 const popularCourses = [
-  { slug: 'autocad', name: 'AutoCAD' },
-  { slug: 'revit', name: 'Revit' },
+  { slug: 'autocad', name: 'AutoCAD Drafting' },
+  { slug: 'revit', name: 'Revit Architecture' },
   { slug: 'mern-stack', name: 'MERN Stack' },
   { slug: 'web-development', name: 'Web Development' },
   { slug: 'graphic-designing', name: 'Graphic Designing' },
@@ -32,6 +35,7 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white">
       <div className="container-sky grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10 lg:py-16">
+        {/* Brand Column */}
         <div className="sm:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-3">
             <img
@@ -46,16 +50,15 @@ export default function Footer() {
                 SKYTECH
               </p>
               <p className="text-[11px] font-semibold tracking-[0.16em] text-white/70 uppercase">
-                Skills Academy
+                Academy & Architecture
               </p>
             </div>
           </div>
           <p className="mt-4 max-w-sm text-[14px] leading-relaxed text-white/70 sm:text-[15px]">
-            {academyInfo.tagline}. Practical short courses in technology,
-            engineering, design, and English.
+            {academyInfo.tagline}. Professional IT & Engineering Learning Center and Commercial Architectural Design Studio.
           </p>
-          <p className="mt-3 text-[14px] font-medium text-white/85 sm:text-[15px]">
-            {academyInfo.experience} • {academyInfo.studentsTrained}
+          <p className="mt-3 text-[13px] font-medium text-blue-light">
+            7+ Years of Experience • 1000+ Students Trained • 3 Regional Campuses
           </p>
           <div className="mt-5 flex items-center gap-2.5">
             {facebookHref ? (
@@ -63,7 +66,7 @@ export default function Footer() {
                 href={facebookHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit Skytech Skills Academy on Facebook"
+                aria-label="Visit Skytech on Facebook"
                 title="Facebook"
                 className={socialIconClass}
               >
@@ -74,8 +77,8 @@ export default function Footer() {
                 tabIndex={0}
                 role="button"
                 className={`${socialIconClass} cursor-pointer hover:bg-white/20`}
-                title="Skytech Skills Academy on Facebook"
-                aria-label="Skytech Skills Academy on Facebook"
+                title="Skytech on Facebook"
+                aria-label="Skytech on Facebook"
               >
                 <FacebookIcon size={18} />
               </span>
@@ -94,7 +97,7 @@ export default function Footer() {
               href={academyInfo.social.tiktok.href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Visit Skytech Skills Academy on TikTok"
+              aria-label="Visit Skytech on TikTok"
               title="TikTok"
               className={socialIconClass}
             >
@@ -103,9 +106,10 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Quick Links */}
         <div>
           <h2 className="text-[12px] font-semibold tracking-[0.14em] text-white/90 uppercase sm:text-[13px]">
-            Quick Links
+            Navigation
           </h2>
           <ul className="mt-4 space-y-2.5">
             {quickLinks.map((link) => (
@@ -121,9 +125,10 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* Popular Courses */}
         <div>
           <h2 className="text-[12px] font-semibold tracking-[0.14em] text-white/90 uppercase sm:text-[13px]">
-            Popular Courses
+            Programs & Tools
           </h2>
           <ul className="mt-4 space-y-2.5">
             {popularCourses.map((course) => (
@@ -136,22 +141,32 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
+            <li className="pt-2">
+              <Link
+                to="/services"
+                className="text-[13px] font-semibold text-blue-light transition-colors hover:text-white flex items-center gap-1.5"
+              >
+                <span>Architectural Design Services</span>
+                <span>→</span>
+              </Link>
+            </li>
           </ul>
         </div>
 
+        {/* Contact & Campus Branches */}
         <div>
           <h2 className="text-[12px] font-semibold tracking-[0.14em] text-white/90 uppercase sm:text-[13px]">
-            Contact Information
+            Our 3 Campuses & Contact
           </h2>
-          <ul className="mt-4 space-y-3.5 text-[14px] text-white/70 sm:text-[15px]">
+          <ul className="mt-4 space-y-3 text-[14px] text-white/70 sm:text-[15px]">
             <li className="flex gap-3">
-              <Phone size={17} className="mt-0.5 shrink-0 text-white/80" aria-hidden="true" />
+              <Phone size={17} className="mt-0.5 shrink-0 text-blue-light" aria-hidden="true" />
               <a href={academyInfo.phoneHref} className="hover:text-white">
                 {academyInfo.phone}
               </a>
             </li>
             <li className="flex gap-3">
-              <WhatsAppIcon size={17} className="mt-0.5 shrink-0 text-white/80" />
+              <WhatsAppIcon size={17} className="mt-0.5 shrink-0 text-blue-light" />
               <a
                 href={academyInfo.whatsappHref}
                 target="_blank"
@@ -162,29 +177,34 @@ export default function Footer() {
               </a>
             </li>
             <li className="flex gap-3">
-              <Mail size={17} className="mt-0.5 shrink-0 text-white/80" aria-hidden="true" />
+              <Mail size={17} className="mt-0.5 shrink-0 text-blue-light" aria-hidden="true" />
               <a href={academyInfo.emailHref} className="break-all hover:text-white">
                 {academyInfo.email}
               </a>
             </li>
-            <li className="flex gap-3">
-              <MapPin size={17} className="mt-0.5 shrink-0 text-white/80" aria-hidden="true" />
-              <Link to="/about#location" className="hover:text-white">
-                {academyInfo.addressLines.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
-              </Link>
-            </li>
           </ul>
+
+          <div className="mt-5 pt-4 border-t border-white/10">
+            <h3 className="text-xs font-semibold text-white/90 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <Building2 className="w-3.5 h-3.5 text-blue-light" />
+              Regional Branches
+            </h3>
+            <div className="space-y-2 text-xs text-white/70">
+              {campuses.map((c) => (
+                <div key={c.id}>
+                  <span className="text-white font-medium">{c.name} ({c.city}): </span>
+                  <span>{c.address}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="border-t border-white/10">
         <div className="container-sky flex flex-col gap-2 py-5 text-center text-[13px] text-white/55 sm:flex-row sm:items-center sm:justify-between sm:text-left sm:text-[14px]">
-          <p>© 2026 Skytech Skills Academy. All rights reserved.</p>
-          <p>Dargai, Malakand, Khyber Pakhtunkhwa</p>
+          <p>© 2026 Skytech Skills Academy & Architecture Services. All rights reserved.</p>
+          <p>Dargai (Main) • Lower Dir (Khall) • Skhakot</p>
         </div>
       </div>
     </footer>

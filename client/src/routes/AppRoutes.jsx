@@ -7,6 +7,7 @@ import Courses from '../pages/Courses'
 import Enroll from '../pages/Enroll'
 import Home from '../pages/Home'
 import OurStory from '../pages/OurStory'
+import Services from '../pages/Services'
 
 export default function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ export default function AppRoutes() {
         <Route index element={<Home />} />
         <Route path="courses" element={<Courses />} />
         <Route path="course/:slug" element={<CourseDetails />} />
+        <Route path="services" element={<Services />} />
         <Route path="about" element={<About />} />
         <Route path="our-story" element={<OurStory />} />
         <Route path="contact" element={<Contact />} />

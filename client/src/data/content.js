@@ -13,11 +13,11 @@ export const academyInfo = {
     'Adnan Plaza, Opposite to Lahori Sweets & Bakery',
     'Dargai, Malakand, Khyber Pakhtunkhwa, Pakistan',
   ],
-  experience: '4+ Years of Experience',
-  studentsTrained: '100+ Students Trained',
+  experience: '7+ Years of Experience',
+  studentsTrained: '1000+ Students Trained',
   studentImpactStatement:
-    'Over 100+ students have been trained through our practical learning programs, with learners using their skills in professional environments and working toward their career goals.',
-  hours: 'Contact us for class schedules and visiting hours',
+    'Over 1000+ students have been trained across our 3 campus branches through our practical learning programs, with learners using their skills in professional environments, freelancing, and architectural practice.',
+  hours: 'Contact us for class schedules, branch visits, and project consultations',
   social: {
     tiktok: {
       label: 'TikTok',
@@ -45,29 +45,30 @@ export const trustIndicators = [
   'Practical Learning',
   'Professional Instructors',
   'Career-Focused Training',
-  '4+ Years of Experience',
+  '7+ Years of Experience',
+  '3 Campus Branches',
 ]
 
 export const highlights = [
   {
     title: 'Practical Skill Training',
     description:
-      'Learn by doing with practical exercises that mirror real workplace tasks and project workflows.',
+      'Learn by doing with practical exercises that mirror real workplace tasks and professional engineering workflows.',
   },
   {
     title: 'Career-Focused Courses',
     description:
-      'Programs designed to help learners build skills that support education goals, freelancing, and employment.',
+      'Programs designed to help learners build skills that support education goals, freelancing, and direct employment.',
   },
   {
-    title: 'Clear Learning Paths',
+    title: 'Architecture & Design Services',
     description:
-      'From foundational tools to specialized courses, choose a path that matches your current level and goals.',
+      'Beyond training, our senior architectural team provides full-cycle architectural planning, 3D visualization, and drafting services.',
   },
   {
-    title: '4+ Years of Experience',
+    title: '7+ Years of Experience',
     description:
-      'With over four years of focused skills training, we continue refining practical courses for learners in our community.',
+      'With over 7 years of focused technical instruction and regional architectural practice across 3 campus branches.',
   },
 ]
 
@@ -144,28 +145,28 @@ export const storyContent = {
 
 export const aboutImpactMetrics = [
   {
-    metric: '4+',
+    metric: '7+',
     label: 'Years of Experience',
     description:
-      'Providing dedicated, career-oriented short courses to learners in Dargai, Malakand and surrounding areas.',
+      'Providing dedicated, career-oriented professional training and architectural services across the Malakand and Dir divisions.',
   },
   {
-    metric: '100+',
+    metric: '1000+',
     label: 'Students Trained',
     description:
-      'Over 100+ students have developed usable skills through our practical programs, preparing for professional roles and academic growth.',
+      'Over 1000+ students have developed usable skills through our practical programs, preparing for professional roles, freelancing, and academic growth.',
   },
   {
-    metric: 'Hands-On',
-    label: 'Skill Development',
+    metric: '3',
+    label: 'Campus Branches',
     description:
-      'Focused training centered on industry software, practical design tasks, real code, and communicative fluency.',
+      'Operational training centers in Dargai (Main Campus), Khall Bazaar (Lower Dir), and Skhakot Bazar.',
   },
   {
-    metric: 'Career-Ready',
-    label: 'Learning Pathways',
+    metric: 'Full-Cycle',
+    label: 'Architecture & Design',
     description:
-      'Structured step-by-step curricula that equip learners with tools they can confidently apply in offices and studios.',
+      'Commercial architectural design, 2D drafting, 3D photorealistic visualization, and interior space planning.',
   },
 ]
 
@@ -173,12 +174,12 @@ export const aboutSections = [
   {
     title: 'Who We Are',
     description:
-      'Skytech Skills Academy is a professional learning center located in Dargai, Malakand. We focus on structured short courses in technology, engineering, design, and English communication designed to build career readiness.',
+      'Skytech is a dual-platform institution: a premier technical skills academy and a professional architectural design practice. We operate across 3 regional branches in Khyber Pakhtunkhwa with deep commitments to hands-on competence and client delivery.',
   },
   {
     title: 'Our Experience',
     description:
-      'With 4+ years of experience, we have established a grounded, practical teaching method tailored to the needs of students and young professionals seeking usable skills.',
+      'With 7+ years of experience, we have established a grounded, practical teaching method tailored to the needs of students and young professionals seeking usable skills alongside commercial architectural solutions.',
   },
   {
     title: 'What We Teach',
@@ -188,17 +189,17 @@ export const aboutSections = [
   {
     title: 'Our Learning Approach',
     description:
-      'We prioritize guided, project-based practice over theory alone. Every module connects software tools and speaking exercises directly to real-world tasks.',
+      'We prioritize guided, project-based practice over theory alone. Every module connects software tools and speaking exercises directly to real-world tasks and live project standards.',
   },
   {
-    title: 'Why Practical Skills Matter',
+    title: 'Professional Architecture Division',
     description:
-      'In today’s job market, technical software proficiency and clear communication are essential. Practical training bridges academic theory and professional workplace expectations.',
+      'Led by seasoned architectural designers with 7+ years in the field, our studio provides complete architectural drafting, planning, and photorealistic 3D visualization for residential and commercial projects.',
   },
   {
-    title: 'Student Impact & Career Focus',
+    title: 'Student Impact & Regional Presence',
     description:
-      'Over 100+ students have completed our courses, going on to use their practical skills in professional environments, freelance projects, and university studies.',
+      'Over 1000+ students have completed our courses across our 3 campus branches in Dargai, Khall (Dir Lower), and Skhakot, using their practical skills in studios, offices, freelance marketplaces, and higher education.',
   },
 ]
 
@@ -265,3 +266,26 @@ export const categoryCards = [
     href: '/courses?q=IELTS',
   },
 ]
+
+export const directorInfo = {
+  name: 'Wajid Khan',
+  role: 'Managing Director & Lead Architectural Designer',
+  title: 'Architectural Designer & Technical Educator',
+  experience: '7+ Years of Industry Experience',
+  credentials: [
+    '7+ Years Architectural Drafting & 3D Visualization',
+    'Certified Instructor across BIM & CAD Environments',
+    'Founder & Director of Skytech Group (3 Branches)',
+  ],
+  bio: 'Wajid Khan is an architectural designer and education director with over 7 years of specialized experience in building information modeling (BIM), photorealistic rendering, and engineering software instruction. Under his leadership, Skytech has expanded from Dargai to 3 regional campus branches across Malakand and Dir, successfully mentoring over 1000+ students while actively delivering commercial and residential architectural designs.',
+  specialties: [
+    'Architectural Master Planning & Working Drawings',
+    '3D Photorealistic Exterior & Interior Rendering (Lumion, 3Ds Max)',
+    'Structural & Technical Drafting (AutoCAD, Revit)',
+    'Modern Residential Elevations & Commercial Setbacks',
+    'Technical Curriculum & Professional Mentorship',
+  ],
+  phone: '+92 342 2421701',
+  phoneHref: 'tel:+923422421701',
+  whatsappHref: 'https://wa.me/923422421701',
+}
