@@ -24,7 +24,7 @@ import {
   learningEnvironmentFeatures,
 } from '../data/content'
 import { usePageSEO } from '../hooks/usePageSEO'
-import { useScrollReveal, useStaggerCards } from '../utils/motion'
+import { useImageReveal, useScrollReveal, useStaggerCards } from '../utils/motion'
 
 const domainTracks = [
   {
@@ -91,6 +91,7 @@ export default function About() {
   const heroRef = useRef(null)
   const metricsRef = useRef(null)
   const whoWeAreRef = useRef(null)
+  const aboutImgRef = useRef(null)
   const domainsRef = useRef(null)
   const pillarsRef = useRef(null)
   const impactRef = useRef(null)
@@ -100,6 +101,7 @@ export default function About() {
   useScrollReveal(heroRef)
   useStaggerCards(metricsRef, '.stagger-item')
   useScrollReveal(whoWeAreRef)
+  useImageReveal(aboutImgRef)
   useStaggerCards(domainsRef, '.stagger-item')
   useStaggerCards(pillarsRef, '.stagger-item')
   useScrollReveal(impactRef)
@@ -195,7 +197,10 @@ export default function About() {
               </Button>
             </div>
           </div>
-          <div className="relative min-h-[320px] overflow-hidden rounded-xl border border-border shadow-md sm:min-h-[420px]">
+          <div
+            ref={aboutImgRef}
+            className="relative min-h-[320px] overflow-hidden rounded-xl border border-border shadow-md sm:min-h-[420px]"
+          >
             <img
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
               alt="Practical training at Skytech Skills Academy"
@@ -203,7 +208,7 @@ export default function About() {
               decoding="async"
               width={1200}
               height={800}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/20 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-white">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import logo from '../assets/logo.jpeg'
@@ -15,6 +15,7 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const progressRef = useRef(null)
 
   useEffect(() => {
     let ticking = false
@@ -22,6 +23,13 @@ export default function Navbar() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           setScrolled(window.scrollY > 8)
+
+          if (progressRef.current) {
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+            const progress = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0
+            progressRef.current.style.transform = `scaleX(${progress})`
+          }
+
           ticking = false
         })
         ticking = true
@@ -56,22 +64,29 @@ export default function Navbar() {
           : 'shadow-none'
       )}
     >
+      {/* 2px Scroll Progress Bar */}
+      <div
+        ref={progressRef}
+        className="scroll-progress-bar"
+        aria-hidden="true"
+      />
+
       <div className="container-sky grid h-16 grid-cols-[1fr_auto] items-center gap-3 lg:h-[76px] lg:grid-cols-[auto_1fr_auto]">
         <Link
           to="/"
-          className="flex min-w-0 items-center gap-3"
+          className="group flex min-w-0 items-center gap-3"
           onClick={() => setOpen(false)}
           aria-label="Skytech Skills Academy home"
         >
           <img
             src={logo}
             alt="Skytech Skills Academy Logo"
-            className="h-[38px] w-auto rounded-sm object-contain ring-1 ring-white/15 sm:h-[44px] lg:h-[48px]"
+            className="h-[38px] w-auto rounded-sm object-contain ring-1 ring-white/15 transition-transform duration-250 group-hover:scale-[1.04] sm:h-[44px] lg:h-[48px]"
             width={36}
             height={48}
           />
           <div className="flex flex-col">
-            <span className="font-display text-[15px] font-bold tracking-tight text-white sm:text-[17px] leading-tight">
+            <span className="font-display text-[15px] font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-blue-light sm:text-[17px] leading-tight">
               SKYTECH
             </span>
             <span className="hidden text-[10.5px] font-medium tracking-[0.16em] text-white/70 uppercase sm:inline-block">
@@ -91,14 +106,23 @@ export default function Navbar() {
               end={link.to === '/'}
               className={({ isActive }) =>
                 cn(
-                  'relative px-3.5 py-2 text-[15px] font-medium text-white/80 transition-colors duration-200 hover:text-white',
-                  isActive && 'font-semibold text-white',
-                  isActive &&
-                    "after:absolute after:inset-x-3 after:-bottom-[10px] after:h-[2.5px] after:rounded-full after:bg-white after:content-['']"
+                  'group/nav relative px-3.5 py-2 text-[15px] font-medium text-white/80 transition-colors duration-200 hover:text-white',
+                  isActive && 'font-semibold text-white'
                 )
               }
             >
-              {link.label}
+              {({ isActive }) => (
+                <>
+                  <span>{link.label}</span>
+                  <span
+                    className={cn(
+                      'absolute inset-x-3 -bottom-[10px] h-[2.5px] rounded-full bg-white transition-transform duration-300 ease-out origin-center',
+                      isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover/nav:scale-x-75 group-hover/nav:opacity-40'
+                    )}
+                    aria-hidden="true"
+                  />
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
@@ -106,20 +130,36 @@ export default function Navbar() {
         <div className="flex items-center justify-end gap-2">
           <Link
             to="/enroll"
-            className="btn-primary hidden h-11 px-5 py-0 text-[14px] lg:inline-flex"
+            className="btn-primary hidden h-11 px-5 py-0 text-[14px] lg:inline-flex transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
             Enroll Now
           </Link>
 
+          {/* Morphing Hamburger / Close Icon */}
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 lg:hidden"
+            className="relative inline-flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
             onClick={() => setOpen((prev) => !prev)}
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            <span className="relative flex h-6 w-6 items-center justify-center">
+              <Menu
+                size={22}
+                className={cn(
+                  'absolute transition-all duration-250',
+                  open ? 'scale-75 opacity-0 rotate-90' : 'scale-100 opacity-100 rotate-0'
+                )}
+              />
+              <X
+                size={22}
+                className={cn(
+                  'absolute transition-all duration-250',
+                  open ? 'scale-100 opacity-100 rotate-0' : 'scale-75 opacity-0 -rotate-90'
+                )}
+              />
+            </span>
           </button>
         </div>
       </div>

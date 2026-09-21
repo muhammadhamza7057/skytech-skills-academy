@@ -5,7 +5,7 @@ import SectionHeading from '../components/SectionHeading'
 import { storyContent } from '../data/content'
 import { usePageSEO } from '../hooks/usePageSEO'
 import { cn } from '../utils/cn'
-import { useScrollReveal, useStaggerCards } from '../utils/motion'
+import { useImageReveal, useScrollReveal, useStaggerCards } from '../utils/motion'
 
 export default function OurStory() {
   const [lang, setLang] = useState('en')
@@ -20,10 +20,12 @@ export default function OurStory() {
 
   const heroRef = useRef(null)
   const articleRef = useRef(null)
+  const storyImgRef = useRef(null)
   const disciplinesRef = useRef(null)
 
   useScrollReveal(heroRef)
   useScrollReveal(articleRef)
+  useImageReveal(storyImgRef)
   useStaggerCards(disciplinesRef, '.stagger-item')
 
   return (
@@ -73,7 +75,10 @@ export default function OurStory() {
 
       <article ref={articleRef} className="container-sky section-pad">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div className="relative min-h-[300px] overflow-hidden rounded-xl border border-border shadow-sm sm:min-h-[440px]">
+          <div
+            ref={storyImgRef}
+            className="relative min-h-[300px] overflow-hidden rounded-xl border border-border shadow-sm sm:min-h-[440px]"
+          >
             <img
               src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80"
               alt="Professional learning environment with modern workspace at Skytech"
@@ -81,7 +86,7 @@ export default function OurStory() {
               decoding="async"
               width={1200}
               height={800}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
           </div>
