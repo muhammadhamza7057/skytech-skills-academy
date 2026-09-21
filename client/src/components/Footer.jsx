@@ -18,8 +18,8 @@ const quickLinks = [
 ]
 
 const popularCourses = [
-  { slug: 'autocad', name: 'AutoCAD Drafting' },
-  { slug: 'revit', name: 'Revit Architecture' },
+  { slug: 'autocad', name: 'AutoCAD Architectural & MEP' },
+  { slug: 'revit', name: 'Revit Architectural' },
   { slug: 'mern-stack', name: 'MERN Stack' },
   { slug: 'web-development', name: 'Web Development' },
   { slug: 'graphic-designing', name: 'Graphic Designing' },

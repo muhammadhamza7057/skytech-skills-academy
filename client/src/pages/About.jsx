@@ -33,7 +33,13 @@ const domainTracks = [
     icon: Building2,
     description:
       'Precision drafting, BIM, and 3D architectural visualization using industry-standard tools.',
-    courses: ['AutoCAD', 'Revit', '3Ds Max', 'SketchUp', 'Lumion'],
+    courses: [
+      'AutoCAD Architectural & MEP',
+      '3ds Max',
+      'Revit Architectural',
+      'SketchUp',
+      'Lumion',
+    ],
   },
   {
     title: 'Web & Digital Development',

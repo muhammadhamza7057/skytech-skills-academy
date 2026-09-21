@@ -96,9 +96,9 @@ export const whyChoose = [
 ]
 
 export const engineeringFeatures = [
-  'AutoCAD',
-  'Revit',
-  '3Ds Max',
+  'AutoCAD Architectural & MEP',
+  'Revit Architectural',
+  '3ds Max',
   'SketchUp',
   'Lumion',
   'Architecture',

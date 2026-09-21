@@ -48,10 +48,12 @@ export default function CourseDetails() {
   }
 
   const meta = [
-    { label: 'Fee', value: course.fee },
+    { label: 'Course Fee', value: course.fee },
+    { label: 'Class Mode', value: course.mode },
+    ...(course.includesSummary
+      ? [{ label: 'Includes', value: course.includesSummary }]
+      : [{ label: 'Level', value: course.level }]),
     { label: 'Duration', value: course.duration },
-    { label: 'Level', value: course.level },
-    { label: 'Mode', value: course.mode },
   ]
 
   return (
@@ -73,6 +75,14 @@ export default function CourseDetails() {
               <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-navy sm:text-4xl lg:text-5xl">
                 {course.name}
               </h1>
+
+              {course.includesSummary && (
+                <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-blue/10 px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-blue border border-blue/20">
+                  <span className="text-muted uppercase text-[11px] tracking-wider">Includes:</span>
+                  <span className="text-navy font-bold">{course.includesSummary}</span>
+                </div>
+              )}
+
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base lg:text-lg">
                 {course.description}
               </p>

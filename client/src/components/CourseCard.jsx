@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Clock3, Layers } from 'lucide-react'
+import { ArrowRight, Clock3 } from 'lucide-react'
 import Button from './Button'
 import { COURSE_FALLBACK_IMAGE } from '../data/courses'
 
@@ -41,22 +41,38 @@ export default function CourseCard({ course }) {
             />
           </Link>
         </h3>
+
+        {/* Additional Course Content Highlight */}
+        {course.cardHighlight && (
+          <div className="mt-2">
+            <span className="inline-block rounded-md bg-blue/10 px-2.5 py-1 text-xs font-semibold text-blue border border-blue/20">
+              {course.cardHighlight}
+            </span>
+          </div>
+        )}
+
         <p className="text-card-desc mt-2.5 flex-1 line-clamp-3 leading-relaxed text-muted">
           {course.shortDescription}
         </p>
 
-        <div className="mt-5 grid grid-cols-2 gap-2.5 border-t border-border pt-4 text-[13px] text-muted sm:text-sm">
-          <p className="inline-flex items-center gap-1.5 font-medium">
-            <Clock3 size={15} className="shrink-0 text-blue/80" aria-hidden="true" />
-            <span>{course.duration}</span>
-          </p>
-          <p className="inline-flex items-center gap-1.5 font-medium">
-            <Layers size={15} className="shrink-0 text-blue/80" aria-hidden="true" />
-            <span>{course.level}</span>
-          </p>
-          <p className="col-span-2 text-[15px] font-bold text-navy sm:text-base">
-            {course.fee}
-          </p>
+        <div className="mt-5 border-t border-border pt-4 text-[13px] text-muted sm:text-sm">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-800 border border-emerald-200/80">
+              {course.mode}
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-muted">
+              <Clock3 size={14} className="shrink-0 text-blue/80" aria-hidden="true" />
+              <span>{course.duration}</span>
+            </span>
+          </div>
+          <div className="mt-2.5 flex items-baseline justify-between">
+            <span className="text-xs font-medium uppercase tracking-wider text-muted">
+              Course Fee
+            </span>
+            <p className="text-base font-bold text-navy sm:text-lg">
+              {course.fee}
+            </p>
+          </div>
         </div>
 
         <div className="mt-5 grid grid-cols-2 gap-2.5">

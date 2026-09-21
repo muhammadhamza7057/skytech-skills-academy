@@ -47,8 +47,17 @@ export default function EnrollmentForm({ defaultCourse = '' }) {
   }, [defaultCourse])
 
   const courseOptions = useMemo(
-    () => courses.map((course) => ({ value: course.slug, label: course.name })),
+    () =>
+      courses.map((course) => ({
+        value: course.slug,
+        label: `${course.name} — ${course.fee} (${course.mode})`,
+      })),
     []
+  )
+
+  const selectedCourseData = useMemo(
+    () => courses.find((c) => c.slug === values.selectedCourse),
+    [values.selectedCourse]
   )
 
   const update = (name, value) => {
@@ -88,8 +97,14 @@ export default function EnrollmentForm({ defaultCourse = '' }) {
             </p>
             <p className="mt-4 text-sm font-semibold text-navy">
               Selected course:{' '}
-              {courseOptions.find((c) => c.value === values.selectedCourse)?.label}
+              {selectedCourseData?.name || courseOptions.find((c) => c.value === values.selectedCourse)?.label}
             </p>
+            {selectedCourseData && (
+              <p className="mt-1.5 text-xs text-muted">
+                Fee: <span className="font-semibold text-navy">{selectedCourseData.fee}</span> • Class Mode: <span className="font-semibold text-emerald-700">{selectedCourseData.mode}</span>
+                {selectedCourseData.includesSummary ? ` • Includes: ${selectedCourseData.includesSummary}` : ''}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -247,6 +262,44 @@ export default function EnrollmentForm({ defaultCourse = '' }) {
                 ))}
               </select>
             </Field>
+
+            {/* Selected Course Details Card */}
+            {selectedCourseData && (
+              <div className="mt-3 rounded-lg border border-blue/20 bg-blue/5 p-4 text-xs sm:text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div>
+                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted">
+                      Course Name
+                    </span>
+                    <span className="font-bold text-navy text-sm sm:text-base">
+                      {selectedCourseData.name}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted">
+                      Course Fee
+                    </span>
+                    <span className="font-bold text-blue text-sm sm:text-base">
+                      {selectedCourseData.fee}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted">
+                      Class Mode
+                    </span>
+                    <span className="inline-block mt-0.5 font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200/80">
+                      {selectedCourseData.mode}
+                    </span>
+                  </div>
+                </div>
+                {selectedCourseData.includesSummary && (
+                  <div className="mt-2.5 pt-2.5 border-t border-blue/15 text-xs text-navy flex items-center gap-1.5">
+                    <span className="font-bold text-blue">Includes:</span>
+                    <span className="font-medium text-navy">{selectedCourseData.includesSummary}</span>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </section>
