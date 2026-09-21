@@ -1,5 +1,7 @@
+import { useRef } from 'react'
 import Button from './Button'
 import { cn } from '../utils/cn'
+import { useScrollReveal } from '../utils/motion'
 
 export default function CTASection({
   title,
@@ -10,8 +12,11 @@ export default function CTASection({
   secondaryTo,
   className,
 }) {
+  const sectionRef = useRef(null)
+  useScrollReveal(sectionRef)
+
   return (
-    <section className={cn('section-pad bg-navy text-white', className)}>
+    <section ref={sectionRef} className={cn('section-pad bg-navy text-white', className)}>
       <div className="container-sky max-w-3xl text-center">
         <h2 className="font-display text-[1.75rem] font-bold tracking-tight text-white sm:text-4xl lg:text-[2.5rem]">
           {title}

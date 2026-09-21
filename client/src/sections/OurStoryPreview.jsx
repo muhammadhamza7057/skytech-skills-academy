@@ -1,9 +1,14 @@
+import { useRef } from 'react'
 import SectionHeading from '../components/SectionHeading'
 import Button from '../components/Button'
+import { useScrollReveal } from '../utils/motion'
 
 export default function OurStoryPreview() {
+  const sectionRef = useRef(null)
+  useScrollReveal(sectionRef)
+
   return (
-    <section className="section-pad bg-surface">
+    <section ref={sectionRef} className="section-pad bg-surface">
       <div className="container-sky grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <div>
           <SectionHeading
@@ -26,6 +31,9 @@ export default function OurStoryPreview() {
             alt="Learners collaborating in a professional training environment"
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
+            decoding="async"
+            width={600}
+            height={420}
           />
         </div>
       </div>

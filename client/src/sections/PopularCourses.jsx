@@ -1,10 +1,15 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { getPopularCourses } from '../data/courses'
 import CourseCard from '../components/CourseCard'
 import SectionHeading from '../components/SectionHeading'
+import { useStaggerCards } from '../utils/motion'
 
 export default function PopularCourses() {
   const popular = getPopularCourses()
+  const gridRef = useRef(null)
+
+  useStaggerCards(gridRef, '.stagger-item')
 
   return (
     <section className="section-pad bg-white">
@@ -19,7 +24,7 @@ export default function PopularCourses() {
             View all courses
           </Link>
         </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div ref={gridRef} className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {popular.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}

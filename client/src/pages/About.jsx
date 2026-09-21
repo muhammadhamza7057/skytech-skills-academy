@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import {
   Briefcase,
   Building2,
@@ -23,6 +24,7 @@ import {
   learningEnvironmentFeatures,
 } from '../data/content'
 import { usePageSEO } from '../hooks/usePageSEO'
+import { useScrollReveal, useStaggerCards } from '../utils/motion'
 
 const domainTracks = [
   {
@@ -86,11 +88,29 @@ export default function About() {
     path: '/about',
   })
 
+  const heroRef = useRef(null)
+  const metricsRef = useRef(null)
+  const whoWeAreRef = useRef(null)
+  const domainsRef = useRef(null)
+  const pillarsRef = useRef(null)
+  const impactRef = useRef(null)
+  const envRef = useRef(null)
+  const locationRef = useRef(null)
+
+  useScrollReveal(heroRef)
+  useStaggerCards(metricsRef, '.stagger-item')
+  useScrollReveal(whoWeAreRef)
+  useStaggerCards(domainsRef, '.stagger-item')
+  useStaggerCards(pillarsRef, '.stagger-item')
+  useScrollReveal(impactRef)
+  useStaggerCards(envRef, '.stagger-item')
+  useScrollReveal(locationRef)
+
   return (
     <div className="bg-white">
       {/* Hero Header */}
       <section className="border-b border-border bg-surface">
-        <div className="container-sky section-pad pb-14">
+        <div ref={heroRef} className="container-sky section-pad pb-14">
           <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'About' }]} />
           <div className="max-w-3xl">
             <SectionHeading
@@ -119,14 +139,14 @@ export default function About() {
       {/* Trust & Impact Metrics Section */}
       <section className="section-pad bg-white">
         <div className="container-sky">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div ref={metricsRef} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {aboutImpactMetrics.map((item, idx) => {
               const icons = [Clock3, Users, Laptop, Briefcase]
               const Icon = icons[idx] || CheckCircle2
               return (
                 <div
                   key={item.label}
-                  className="card-surface p-6 sm:p-7 flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:border-blue/30"
+                  className="stagger-item card-surface p-6 sm:p-7 flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:border-blue/30"
                 >
                   <div>
                     <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-surface text-blue mb-4">
@@ -151,7 +171,7 @@ export default function About() {
 
       {/* Who We Are & Mission */}
       <section className="section-pad bg-surface border-y border-border">
-        <div className="container-sky grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div ref={whoWeAreRef} className="container-sky grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeading
               eyebrow="Who We Are"
@@ -179,6 +199,10 @@ export default function About() {
             <img
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
               alt="Practical training at Skytech Skills Academy"
+              loading="lazy"
+              decoding="async"
+              width={1200}
+              height={800}
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/20 to-transparent" />
@@ -202,13 +226,13 @@ export default function About() {
             title="Comprehensive tracks for modern careers"
             description="Our curriculum spans engineering software, web development, creative design, and language skills — all structured for practical application."
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div ref={domainsRef} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {domainTracks.map((track) => {
               const Icon = track.icon
               return (
                 <div
                   key={track.title}
-                  className="card-surface flex flex-col justify-between p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue/30"
+                  className="stagger-item card-surface flex flex-col justify-between p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue/30"
                 >
                   <div>
                     <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-surface text-blue">
@@ -251,9 +275,9 @@ export default function About() {
             title="Why practical skills matter more than theory alone"
             description="In competitive job markets, employers and clients value verifiable tool proficiency and clear communication. Here is how our approach ensures readiness."
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div ref={pillarsRef} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {learningPillars.map((pillar, idx) => (
-              <div key={pillar.title} className="card-surface p-6">
+              <div key={pillar.title} className="stagger-item card-surface p-6">
                 <span className="flex h-9 w-9 items-center justify-center rounded-md bg-navy text-sm font-bold text-white">
                   0{idx + 1}
                 </span>
@@ -272,7 +296,7 @@ export default function About() {
       {/* Student Impact Section */}
       <section className="section-pad bg-white">
         <div className="container-sky">
-          <div className="rounded-2xl border border-border bg-surface p-8 sm:p-12 lg:p-16">
+          <div ref={impactRef} className="rounded-2xl border border-border bg-surface p-8 sm:p-12 lg:p-16">
             <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
               <div>
                 <span className="text-xs font-bold tracking-[0.16em] uppercase text-blue">
@@ -347,9 +371,9 @@ export default function About() {
             title="A focused, supportive space to develop skills"
             description="Our training facility at Adnan Plaza is arranged to give each learner direct computer access and dedicated instructor feedback."
           />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div ref={envRef} className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {learningEnvironmentFeatures.map((env) => (
-              <div key={env.title} className="card-surface p-6">
+              <div key={env.title} className="stagger-item card-surface p-6">
                 <h3 className="font-display text-lg font-bold text-navy">
                   {env.title}
                 </h3>
@@ -364,7 +388,7 @@ export default function About() {
 
       {/* Location / Map */}
       <section id="location" className="section-pad scroll-mt-24 bg-white">
-        <div className="container-sky grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+        <div ref={locationRef} className="container-sky grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
             <SectionHeading
               eyebrow="Our Location"

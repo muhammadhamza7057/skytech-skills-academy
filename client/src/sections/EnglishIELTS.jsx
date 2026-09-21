@@ -1,10 +1,15 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { englishFeatures } from '../data/content'
 import SectionHeading from '../components/SectionHeading'
+import { useScrollReveal } from '../utils/motion'
 
 export default function EnglishIELTS() {
+  const sectionRef = useRef(null)
+  useScrollReveal(sectionRef)
+
   return (
-    <section className="section-pad bg-white">
+    <section ref={sectionRef} className="section-pad bg-white">
       <div className="container-sky">
         <SectionHeading
           eyebrow="English & IELTS"

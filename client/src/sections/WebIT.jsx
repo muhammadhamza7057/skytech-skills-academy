@@ -1,10 +1,15 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { webItFeatures } from '../data/content'
 import SectionHeading from '../components/SectionHeading'
+import { useScrollReveal } from '../utils/motion'
 
 export default function WebIT() {
+  const sectionRef = useRef(null)
+  useScrollReveal(sectionRef)
+
   return (
-    <section className="section-pad bg-surface">
+    <section ref={sectionRef} className="section-pad bg-surface">
       <div className="container-sky grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div className="order-2 lg:order-1">
           <SectionHeading
@@ -32,6 +37,9 @@ export default function WebIT() {
             alt="Developer working on web application code"
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
+            decoding="async"
+            width={700}
+            height={460}
           />
           <div className="absolute inset-0 bg-gradient-to-tl from-navy/45 to-transparent" />
         </div>

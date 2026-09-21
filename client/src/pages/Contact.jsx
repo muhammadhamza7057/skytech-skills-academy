@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import {
   CheckCircle2,
   Clock3,
@@ -15,6 +15,7 @@ import SectionHeading from '../components/SectionHeading'
 import { academyInfo } from '../data/content'
 import { usePageSEO } from '../hooks/usePageSEO'
 import { cn } from '../utils/cn'
+import { useScrollReveal, useStaggerCards } from '../utils/motion'
 import { validateContact } from '../utils/validation'
 
 export default function Contact() {
@@ -27,6 +28,14 @@ export default function Contact() {
   })
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+
+  const heroRef = useRef(null)
+  const cardsRef = useRef(null)
+  const formMapRef = useRef(null)
+
+  useScrollReveal(heroRef)
+  useStaggerCards(cardsRef, '.stagger-item')
+  useScrollReveal(formMapRef)
 
   usePageSEO({
     title: 'Contact Skytech Skills Academy | Dargai, Malakand',
@@ -95,7 +104,7 @@ export default function Contact() {
     <div className="bg-white">
       {/* Contact Hero Header — Clean, dedicated heading without duplicate Home navigation */}
       <section className="border-b border-border bg-surface">
-        <div className="container-sky section-pad pb-14">
+        <div ref={heroRef} className="container-sky section-pad pb-14">
           <SectionHeading
             eyebrow="Contact Skytech Skills Academy"
             title="Let's Talk About Your Learning Path"
@@ -107,7 +116,7 @@ export default function Contact() {
       {/* 4 Contact Information Cards */}
       <section className="section-pad bg-white">
         <div className="container-sky">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div ref={cardsRef} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {contactCards.map((card) => {
               const Icon = card.icon
               return (
@@ -116,7 +125,7 @@ export default function Contact() {
                   href={card.href}
                   target={card.external ? '_blank' : undefined}
                   rel={card.external ? 'noopener noreferrer' : undefined}
-                  className="card-surface group flex flex-col justify-between p-6 transition-all duration-200 hover:-translate-y-1 hover:border-blue/40 hover:shadow-md"
+                  className="stagger-item card-surface group flex flex-col justify-between p-6 transition-all duration-200 hover:-translate-y-1 hover:border-blue/40 hover:shadow-md"
                 >
                   <div>
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-surface text-blue transition-colors group-hover:bg-blue group-hover:text-white">
@@ -141,7 +150,7 @@ export default function Contact() {
           </div>
 
           {/* Main Grid: Contact Form & Map */}
-          <div className="mt-14 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div ref={formMapRef} className="mt-14 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
             {/* Contact Form */}
             <div className="card-surface p-6 sm:p-8 lg:p-10 shadow-xs">
               {submitted ? (

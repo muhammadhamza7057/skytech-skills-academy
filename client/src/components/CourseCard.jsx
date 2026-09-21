@@ -8,17 +8,20 @@ export default function CourseCard({ course }) {
   const [imgSrc, setImgSrc] = useState(course.image)
 
   return (
-    <article className="card-surface card-hover group flex h-full flex-col overflow-hidden transition-all duration-300">
+    <article className="stagger-item card-surface group flex h-full flex-col overflow-hidden transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-1 hover:shadow-md">
       <Link
         to={`/course/${course.slug}`}
-        className="relative block aspect-[16/10] w-full overflow-hidden bg-surface"
+        className="relative block aspect-[16/10] w-full overflow-hidden bg-slate-100"
       >
         <img
           src={imgSrc}
           alt={`${course.name} course at Skytech Skills Academy`}
           onError={() => setImgSrc(COURSE_FALLBACK_IMAGE)}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
           loading="lazy"
+          decoding="async"
+          width={600}
+          height={375}
         />
       </Link>
       <div className="flex flex-1 flex-col p-5 sm:p-6">

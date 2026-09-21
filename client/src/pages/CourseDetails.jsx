@@ -1,15 +1,26 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Breadcrumb from '../components/Breadcrumb'
 import Button from '../components/Button'
 import FAQ from '../components/FAQ'
 import { COURSE_FALLBACK_IMAGE, getCourseBySlug } from '../data/courses'
 import { usePageSEO } from '../hooks/usePageSEO'
+import { useScrollReveal, useStaggerCards } from '../utils/motion'
 
 export default function CourseDetails() {
   const { slug } = useParams()
   const course = getCourseBySlug(slug)
   const [imgSrc, setImgSrc] = useState(course?.image)
+
+  const heroRef = useRef(null)
+  const metaRef = useRef(null)
+  const detailsRef = useRef(null)
+  const certFaqRef = useRef(null)
+
+  useScrollReveal(heroRef)
+  useStaggerCards(metaRef, '.stagger-item')
+  useScrollReveal(detailsRef)
+  useScrollReveal(certFaqRef)
 
   usePageSEO({
     title: course ? course.name : 'Course Not Found',
@@ -46,7 +57,7 @@ export default function CourseDetails() {
   return (
     <div className="bg-white">
       <div className="bg-surface">
-        <div className="container-sky section-pad pb-10">
+        <div ref={heroRef} className="container-sky section-pad pb-10">
           <Breadcrumb
             items={[
               { label: 'Home', to: '/' },
@@ -79,6 +90,10 @@ export default function CourseDetails() {
                 src={imgSrc || COURSE_FALLBACK_IMAGE}
                 alt={`${course.name} course cover`}
                 onError={() => setImgSrc(COURSE_FALLBACK_IMAGE)}
+                loading="eager"
+                decoding="async"
+                width={800}
+                height={600}
                 className="aspect-[4/3] w-full object-cover"
               />
             </div>
@@ -87,9 +102,9 @@ export default function CourseDetails() {
       </div>
 
       <div className="container-sky section-pad pt-10">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div ref={metaRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {meta.map((item) => (
-            <div key={item.label} className="rounded-xl border border-border p-5">
+            <div key={item.label} className="stagger-item rounded-xl border border-border p-5">
               <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted">
                 {item.label}
               </p>

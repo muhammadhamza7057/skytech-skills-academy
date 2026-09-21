@@ -9,14 +9,17 @@ export default function CategoryCard({ title, description, image, href }) {
   return (
     <Link
       to={href}
-      className="group relative block min-h-[250px] overflow-hidden rounded-xl bg-navy focus-visible:outline-offset-4 sm:min-h-[280px]"
+      className="stagger-item group relative block min-h-[250px] overflow-hidden rounded-xl bg-navy focus-visible:outline-offset-4 sm:min-h-[280px]"
     >
       <img
         src={imgSrc}
         alt=""
         onError={() => setImgSrc(COURSE_FALLBACK_IMAGE)}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
         loading="lazy"
+        decoding="async"
+        width={450}
+        height={280}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy/85 to-navy/30 transition-opacity duration-300 group-hover:via-navy/75" />
       <div className="relative flex h-full min-h-[250px] flex-col justify-end p-5 text-white sm:min-h-[280px] sm:p-6">

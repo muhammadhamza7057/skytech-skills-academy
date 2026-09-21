@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import Breadcrumb from '../components/Breadcrumb'
 import CourseCard from '../components/CourseCard'
@@ -6,6 +6,7 @@ import CourseFilter from '../components/CourseFilter'
 import SectionHeading from '../components/SectionHeading'
 import { useCourseFilter } from '../hooks/useCourseFilter'
 import { usePageSEO } from '../hooks/usePageSEO'
+import { useStaggerCards } from '../utils/motion'
 
 export default function Courses() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -22,6 +23,9 @@ export default function Courses() {
     hasActiveFilters,
     totalCount,
   } = useCourseFilter(urlCategory, urlQuery)
+
+  const gridRef = useRef(null)
+  useStaggerCards(gridRef, '.stagger-item', {}, [filteredCourses])
 
   usePageSEO({
     title: 'Courses',
@@ -75,7 +79,7 @@ export default function Courses() {
           />
         </div>
         {filteredCourses.length ? (
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div ref={gridRef} className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredCourses.map((course) => (
               <CourseCard key={course.id} course={course} />
             ))}

@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
 import CTASection from '../components/CTASection'
 import SectionHeading from '../components/SectionHeading'
 import { storyContent } from '../data/content'
 import { usePageSEO } from '../hooks/usePageSEO'
 import { cn } from '../utils/cn'
+import { useScrollReveal, useStaggerCards } from '../utils/motion'
 
 export default function OurStory() {
   const [lang, setLang] = useState('en')
@@ -17,10 +18,18 @@ export default function OurStory() {
     path: '/our-story',
   })
 
+  const heroRef = useRef(null)
+  const articleRef = useRef(null)
+  const disciplinesRef = useRef(null)
+
+  useScrollReveal(heroRef)
+  useScrollReveal(articleRef)
+  useStaggerCards(disciplinesRef, '.stagger-item')
+
   return (
     <div className="bg-white">
       <div className="border-b border-border bg-surface">
-        <div className="container-sky section-pad pb-12">
+        <div ref={heroRef} className="container-sky section-pad pb-12">
           <Breadcrumb
             items={[{ label: 'Home', to: '/' }, { label: 'Our Story' }]}
           />
@@ -62,12 +71,16 @@ export default function OurStory() {
         </div>
       </div>
 
-      <article className="container-sky section-pad">
+      <article ref={articleRef} className="container-sky section-pad">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div className="relative min-h-[300px] overflow-hidden rounded-xl border border-border shadow-sm sm:min-h-[440px]">
             <img
               src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80"
               alt="Professional learning environment with modern workspace at Skytech"
+              loading="lazy"
+              decoding="async"
+              width={1200}
+              height={800}
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
@@ -105,7 +118,7 @@ export default function OurStory() {
           <p className="text-center text-xs font-bold tracking-[0.16em] uppercase text-blue">
             Core Disciplines of Skytech
           </p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div ref={disciplinesRef} className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               'Engineering Drafting & CAD',
               'Architectural BIM & Modeling',
@@ -116,7 +129,7 @@ export default function OurStory() {
             ].map((item) => (
               <div
                 key={item}
-                className="card-surface px-5 py-4 text-center text-sm font-bold text-navy"
+                className="stagger-item card-surface px-5 py-4 text-center text-sm font-bold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:border-blue/30"
               >
                 {item}
               </div>

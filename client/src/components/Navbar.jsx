@@ -17,7 +17,16 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    let ticking = false
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 8)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -41,9 +50,9 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-navy transition-[box-shadow,background-color] duration-300',
+        'fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-navy transition-[box-shadow,background-color] duration-250',
         scrolled || open
-          ? 'bg-navy/98 shadow-lg shadow-navy-deep/40 backdrop-blur-md'
+          ? 'bg-navy/98 shadow-md shadow-navy-deep/30 backdrop-blur-xs'
           : 'shadow-none'
       )}
     >
