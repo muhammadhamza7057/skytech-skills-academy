@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react'
-import Breadcrumb from '../components/Breadcrumb'
 import CTASection from '../components/CTASection'
 import SectionHeading from '../components/SectionHeading'
 import DirectorSection from '../components/DirectorSection'
@@ -35,9 +34,6 @@ export default function OurStory() {
     <div className="bg-white">
       <div className="border-b border-border bg-surface">
         <div ref={heroRef} className="container-sky section-pad pb-12">
-          <Breadcrumb
-            items={[{ label: 'Home', to: '/' }, { label: 'Our Story' }]}
-          />
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Our Story & Origins"

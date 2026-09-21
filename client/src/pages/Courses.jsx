@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import Breadcrumb from '../components/Breadcrumb'
 import CourseCard from '../components/CourseCard'
 import CourseFilter from '../components/CourseFilter'
 import SectionHeading from '../components/SectionHeading'
@@ -55,12 +54,6 @@ export default function Courses() {
   return (
     <div className="bg-surface">
       <div className="container-sky section-pad">
-        <Breadcrumb
-          items={[
-            { label: 'Home', to: '/' },
-            { label: 'Courses' },
-          ]}
-        />
         <SectionHeading
           eyebrow="Courses"
           title="Find the right course for your goals"

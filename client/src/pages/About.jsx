@@ -13,7 +13,6 @@ import {
   Phone,
   Users,
 } from 'lucide-react'
-import Breadcrumb from '../components/Breadcrumb'
 import Button from '../components/Button'
 import CampusesSection from '../components/CampusesSection'
 import CTASection from '../components/CTASection'
@@ -120,7 +119,6 @@ export default function About() {
       {/* Hero Header */}
       <section className="border-b border-border bg-surface">
         <div ref={heroRef} className="container-sky section-pad pb-14">
-          <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'About' }]} />
           <div className="max-w-3xl">
             <SectionHeading
               eyebrow="About Skytech Skills Academy"

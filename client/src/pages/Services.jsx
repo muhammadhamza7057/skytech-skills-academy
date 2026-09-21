@@ -5,7 +5,6 @@ import {
   architectureProcess,
   whyWorkWithUs,
 } from '../data/services'
-import Breadcrumb from '../components/Breadcrumb'
 import SectionHeading from '../components/SectionHeading'
 import ProjectGallery from '../components/ProjectGallery'
 import CampusesSection from '../components/CampusesSection'
@@ -41,18 +40,6 @@ export default function Services() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Breadcrumb Navigation */}
-      <div className="bg-surface border-b border-border py-3">
-        <div className="container-sky">
-          <Breadcrumb
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Architecture & Design Services' },
-            ]}
-          />
-        </div>
-      </div>
-
       {/* Services Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-navy to-navy-deep py-16 sm:py-24 text-white">
         {/* Subtle grid pattern background */}

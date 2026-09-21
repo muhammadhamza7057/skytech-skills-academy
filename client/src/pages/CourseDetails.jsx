@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import Breadcrumb from '../components/Breadcrumb'
 import Button from '../components/Button'
 import FAQ from '../components/FAQ'
 import { COURSE_FALLBACK_IMAGE, getCourseBySlug } from '../data/courses'
@@ -60,13 +59,6 @@ export default function CourseDetails() {
     <div className="bg-white">
       <div className="bg-surface">
         <div ref={heroRef} className="container-sky section-pad pb-10">
-          <Breadcrumb
-            items={[
-              { label: 'Home', to: '/' },
-              { label: 'Courses', to: '/courses' },
-              { label: course.name },
-            ]}
-          />
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue">

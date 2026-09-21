@@ -1,5 +1,4 @@
 import { useSearchParams } from 'react-router-dom'
-import Breadcrumb from '../components/Breadcrumb'
 import EnrollmentForm from '../components/EnrollmentForm'
 import SectionHeading from '../components/SectionHeading'
 import { usePageSEO } from '../hooks/usePageSEO'
@@ -18,7 +17,6 @@ export default function Enroll() {
   return (
     <div className="bg-surface min-h-screen">
       <div className="container-sky section-pad">
-        <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Enroll' }]} />
         <SectionHeading
           eyebrow="Admissions & Enrollment"
           title="Enroll in a Skytech Course"

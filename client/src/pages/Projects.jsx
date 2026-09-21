@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import Breadcrumb from '../components/Breadcrumb'
 import SectionHeading from '../components/SectionHeading'
 import ProjectGallery from '../components/ProjectGallery'
 import CampusesSection from '../components/CampusesSection'
@@ -27,19 +26,6 @@ export default function Projects() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Breadcrumb Navigation */}
-      <div className="bg-surface border-b border-border py-3">
-        <div className="container-sky">
-          <Breadcrumb
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Services', href: '/services' },
-              { label: 'Project Portfolio' },
-            ]}
-          />
-        </div>
-      </div>
-
       {/* Projects Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-navy to-navy-deep py-16 sm:py-20 text-white">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />

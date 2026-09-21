@@ -6,7 +6,6 @@ import {
   allProjectSheets,
 } from '../data/residentialProject'
 import CustomProjectViewer from '../components/CustomProjectViewer'
-import Breadcrumb from '../components/Breadcrumb'
 import { usePageSEO } from '../hooks/usePageSEO'
 import { useStaggerCards, useScrollReveal } from '../utils/motion'
 import {
@@ -88,20 +87,6 @@ export default function ResidentialCaseStudy() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Breadcrumb Navigation */}
-      <div className="bg-surface border-b border-border py-3">
-        <div className="container-sky">
-          <Breadcrumb
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Services', href: '/services' },
-              { label: 'Projects', href: '/projects' },
-              { label: 'Residential Architectural Case Study' },
-            ]}
-          />
-        </div>
-      </div>
-
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-navy to-navy-deep py-14 sm:py-20 text-white">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
