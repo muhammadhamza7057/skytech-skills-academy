@@ -271,7 +271,14 @@ export const directorInfo = {
   name: 'Wajid Khan',
   role: 'Managing Director & Lead Architectural Designer',
   title: 'Architectural Designer & Technical Educator',
-  experience: '7+ Years of Industry Experience',
+  experience: '7+ Years of Experience',
+  focus: [
+    'Architecture',
+    'Design',
+    'Drafting',
+    'Visualization',
+    'Practical Design Experience',
+  ],
   credentials: [
     '7+ Years Architectural Drafting & 3D Visualization',
     'Certified Instructor across BIM & CAD Environments',
@@ -289,3 +296,78 @@ export const directorInfo = {
   phoneHref: 'tel:+923422421701',
   whatsappHref: 'https://wa.me/923422421701',
 }
+
+export const hamzaInfo = {
+  name: 'Muhammad Hamza',
+  primaryRole: 'Full-Stack Developer | Software Engineer',
+  secondaryLabel: 'Young Entrepreneur',
+  focus: [
+    'Software Engineering',
+    'Full-Stack Development',
+    'Digital Solutions',
+    'Problem Solving',
+  ],
+  description:
+    'Muhammad Hamza is a Full-Stack Developer, Software Engineer, and young entrepreneur focused on turning real-world problems into practical digital solutions. He works across modern web technologies to design, develop, and improve software that helps businesses, organizations, and individuals solve problems more efficiently.',
+  supportingStatement:
+    'His approach combines software engineering, problem-solving, and an entrepreneurial mindset — from understanding a problem to designing, developing, and delivering a practical solution.',
+  entrepreneurialMindset:
+    'Combining technology with an entrepreneurial mindset to identify opportunities, solve practical problems, and turn ideas into useful digital products and services.',
+  capabilitiesTitle: 'From Problems to Practical Solutions',
+  capabilitiesSubtitle: 'Good technology starts with understanding the problem.',
+  capabilities: [
+    {
+      title: 'Understand the Problem',
+      description:
+        'Identify real challenges and understand what people or businesses actually need.',
+    },
+    {
+      title: 'Design the Solution',
+      description:
+        'Translate requirements and ideas into clear, practical digital solutions.',
+    },
+    {
+      title: 'Build & Develop',
+      description:
+        'Use modern software and full-stack technologies to turn concepts into functional products.',
+    },
+    {
+      title: 'Improve & Scale',
+      description:
+        'Refine solutions based on real needs, usability, and future growth.',
+    },
+  ],
+  flowSteps: [
+    {
+      step: '01',
+      label: 'Problem',
+      description: 'Identify real bottlenecks and challenges',
+    },
+    {
+      step: '02',
+      label: 'Understand',
+      description: 'Analyze real-world requirements and context',
+    },
+    {
+      step: '03',
+      label: 'Plan',
+      description: 'Formulate clean architecture and digital design',
+    },
+    {
+      step: '04',
+      label: 'Build',
+      description: 'Develop functional, modern full-stack software',
+    },
+    {
+      step: '05',
+      label: 'Improve',
+      description: 'Refine usability, performance, and feedback',
+    },
+    {
+      step: '06',
+      label: 'Solution',
+      description: 'Deliver reliable, practical, and scalable tools',
+    },
+  ],
+}
+

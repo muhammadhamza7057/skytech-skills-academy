@@ -4,7 +4,7 @@ import mdImage from '../assets/MD.jpeg'
 import { useImageReveal, useScrollReveal } from '../utils/motion'
 import { CheckCircle2, MessageSquare, Phone, Compass, Award, ShieldCheck } from 'lucide-react'
 
-export default function DirectorSection({ className = '' }) {
+export default function DirectorSection({ className = '', id = 'wajid-khan' }) {
   const imageContainerRef = useRef(null)
   const contentRef = useRef(null)
 
@@ -12,7 +12,7 @@ export default function DirectorSection({ className = '' }) {
   useScrollReveal(contentRef)
 
   return (
-    <section className={`section-pad bg-navy text-white overflow-hidden ${className}`}>
+    <section id={id} className={`section-pad bg-navy text-white overflow-hidden scroll-mt-20 ${className}`}>
       <div className="container-sky">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Director Image Column */}
@@ -41,7 +41,7 @@ export default function DirectorSection({ className = '' }) {
                 <div className="absolute bottom-4 left-4 right-4 bg-navy-deep/90 backdrop-blur-md border border-white/10 p-4 rounded-xl">
                   <div className="flex items-center gap-2 text-blue-light text-xs font-semibold uppercase tracking-wider mb-1">
                     <Compass className="w-3.5 h-3.5" />
-                    Leadership & Practice
+                    Architecture & Design Leadership
                   </div>
                   <h4 className="text-white font-bold text-lg">{directorInfo.name}</h4>
                   <p className="text-white/65 text-xs">{directorInfo.role}</p>
@@ -54,16 +54,37 @@ export default function DirectorSection({ className = '' }) {
           <div ref={contentRef} className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue/20 border border-blue/40 text-xs font-semibold text-blue-light mb-4">
               <Award className="w-4 h-4 text-blue-light" />
-              Executive Leadership & Architectural Practice
+              Architecture & Design • 7+ Years Experience
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-2">
-              Architectural Vision & Technical Excellence
+              {directorInfo.name}
             </h2>
 
-            <p className="text-blue-light text-sm sm:text-base font-medium mb-6">
-              {directorInfo.title} • {directorInfo.experience}
+            <p className="text-blue-light text-base sm:text-lg font-medium mb-3">
+              Architectural Designer • {directorInfo.experience}
             </p>
+
+            {/* Complementary Focus Pills */}
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-6">
+              <span className="text-xs font-bold uppercase tracking-wider text-white/50 mr-1">
+                Focus:
+              </span>
+              {(directorInfo.focus || [
+                'Architecture',
+                'Design',
+                'Drafting',
+                'Visualization',
+                'Practical Design Experience',
+              ]).map((item) => (
+                <span
+                  key={item}
+                  className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-white/10 text-blue-light border border-white/15"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
 
             <p className="text-white/80 text-sm sm:text-base leading-relaxed mb-6">
               {directorInfo.bio}
