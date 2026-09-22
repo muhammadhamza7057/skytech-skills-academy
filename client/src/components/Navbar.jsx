@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
-import logo from '../assets/logo.jpeg'
+import logo from '../assets/logo.png'
 import { cn } from '../utils/cn'
 
 const links = [
@@ -83,7 +83,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Skytech Skills Academy Logo"
-            className="h-[38px] w-auto rounded-sm object-contain ring-1 ring-white/15 transition-transform duration-250 group-hover:scale-[1.04] sm:h-[44px] lg:h-[48px]"
+            className="h-[38px] w-auto rounded-sm object-contain  transition-transform duration-250 group-hover:scale-[1.04] sm:h-[44px] lg:h-[48px]"
             width={36}
             height={48}
           />

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Mail, Phone, Building2 } from 'lucide-react'
-import logo from '../assets/logo.jpeg'
+import logo from '../assets/logo.png'
 import { academyInfo } from '../data/content'
 import { campuses } from '../data/campuses'
 import { FacebookIcon, TikTokIcon, WhatsAppIcon } from './BrandIcons'
@@ -42,7 +42,7 @@ export default function Footer() {
             <img
               src={logo}
               alt="Skytech Skills Academy Logo"
-              className="h-12 w-auto rounded-sm object-contain ring-1 ring-white/15"
+              className="h-12 w-auto rounded-sm object-contain "
               width={36}
               height={48}
             />
