@@ -3,38 +3,47 @@ import CampusesSection from '../components/CampusesSection'
 import { usePageSEO } from '../hooks/usePageSEO'
 import AcademyHighlights from '../sections/AcademyHighlights'
 import ArchitectureServicesPreview from '../sections/ArchitectureServicesPreview'
-import CourseCategories from '../sections/CourseCategories'
-import EngineeringArchitecture from '../sections/EngineeringArchitecture'
-import EnglishIELTS from '../sections/EnglishIELTS'
-import EnrollmentCTA from '../sections/EnrollmentCTA'
-import OurStoryPreview from '../sections/OurStoryPreview'
 import PopularCourses from '../sections/PopularCourses'
 import ProjectsPreview from '../sections/ProjectsPreview'
-import WebIT from '../sections/WebIT'
 import WhyChooseSkytech from '../sections/WhyChooseSkytech'
+import OurStoryPreview from '../sections/OurStoryPreview'
+import EnrollmentCTA from '../sections/EnrollmentCTA'
 
 export default function Home() {
   usePageSEO({
     title: 'Professional IT & Engineering Academy | Architecture Services',
     description:
-      'Skytech Skills Academy & Architecture Services: practical courses in AutoCAD, Revit, web development, graphic design, IELTS, plus commercial architectural planning & 3D visualization. 7+ years of experience across 3 campus branches.',
+      'Skytech Skills Academy & Architecture Services: practical training in AutoCAD, Revit, web development, and design, alongside commercial architectural planning and 3D visualization across 3 regional branches.',
     path: '/',
   })
 
   return (
     <>
+      {/* 1 & 2. Hero with Two Clear Paths: Learners vs Clients */}
       <Hero />
+
+      {/* 3. Key Trust Signals: 7+ Years, 1000+ Students, Practical Training, Architecture & Design */}
       <AcademyHighlights />
-      <CourseCategories />
+
+      {/* 4. Popular Courses Preview */}
       <PopularCourses />
-      <ArchitectureServicesPreview />
-      <ProjectsPreview />
+
+      {/* 5. Why Skytech: Practical Learning & Service Philosophy */}
       <WhyChooseSkytech />
-      <EngineeringArchitecture />
-      <WebIT />
-      <EnglishIELTS />
-      <CampusesSection lightBackground={true} />
+
+      {/* 6. Architecture & Design Services Preview */}
+      <ArchitectureServicesPreview />
+
+      {/* 7. Selected Architectural Projects Preview */}
+      <ProjectsPreview />
+
+      {/* 8. Our Story Preview */}
       <OurStoryPreview />
+
+      {/* Regional Campuses */}
+      <CampusesSection lightBackground={true} />
+
+      {/* 9. Final Dual CTA: For Students & For Clients */}
       <EnrollmentCTA />
     </>
   )

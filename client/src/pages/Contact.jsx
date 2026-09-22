@@ -12,7 +12,6 @@ import {
   Compass,
 } from 'lucide-react'
 import Button from '../components/Button'
-import CampusesSection from '../components/CampusesSection'
 import CTASection from '../components/CTASection'
 import LocationMap from '../components/LocationMapLazy'
 import SectionHeading from '../components/SectionHeading'
@@ -457,9 +456,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
-      {/* Campuses Grid Section */}
-      <CampusesSection lightBackground={false} />
 
       {/* Bottom CTA */}
       <CTASection

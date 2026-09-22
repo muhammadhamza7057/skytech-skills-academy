@@ -14,7 +14,7 @@ export default function ProjectsPreview() {
             description="Explore photorealistic 3D exterior concepts, elevation studies, and interior spaces crafted by our design studio."
           />
           <Link
-            to="/services#portfolio"
+            to="/projects"
             className="inline-flex items-center gap-2 text-sm font-semibold text-blue hover:text-blue-light transition-colors self-start md:self-auto group"
           >
             <span>Explore All 9 Projects</span>
@@ -26,10 +26,10 @@ export default function ProjectsPreview() {
 
         <div className="mt-10 text-center">
           <Link
-            to="/services#portfolio"
+            to="/projects"
             className="btn-outline"
           >
-            <span>View Full Portfolio Gallery</span>
+            <span>View All Projects</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

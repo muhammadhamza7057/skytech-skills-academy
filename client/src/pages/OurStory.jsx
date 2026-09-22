@@ -12,7 +12,6 @@ import { useImageReveal, useScrollReveal, useStaggerCards } from '../utils/motio
 import {
   Compass,
   Code2,
-  ArrowRight,
   Sparkles,
   Layers,
   RefreshCw,
@@ -37,7 +36,6 @@ export default function OurStory() {
   const storyImgRef = useRef(null)
   const disciplinesRef = useRef(null)
   const peopleRef = useRef(null)
-  const peopleCardsRef = useRef(null)
   const beliefsRef = useRef(null)
 
   useScrollReveal(heroRef)
@@ -46,7 +44,6 @@ export default function OurStory() {
   useImageReveal(storyImgRef)
   useStaggerCards(disciplinesRef, '.stagger-item')
   useScrollReveal(peopleRef)
-  useStaggerCards(peopleCardsRef, '.pillar-card')
   useStaggerCards(beliefsRef, '.belief-card')
 
   return (
@@ -241,10 +238,10 @@ export default function OurStory() {
         </div>
       </article>
 
-      {/* 4. The People Behind Skytech: Two Complementary Worlds */}
-      <section className="bg-surface border-y border-border section-pad">
+      {/* 4. The People Behind Skytech */}
+      <section className="bg-surface border-t border-border py-12 sm:py-16">
         <div className="container-sky">
-          <div ref={peopleRef} className="max-w-3xl mb-12">
+          <div ref={peopleRef} className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue/10 border border-blue/20 text-xs font-semibold text-blue mb-3">
               <Users className="w-3.5 h-3.5" />
               The People Behind Skytech
@@ -253,124 +250,8 @@ export default function OurStory() {
               Two Complementary Areas of Expertise
             </h2>
             <p className="text-sm sm:text-base text-muted mt-3 leading-relaxed">
-              Skytech brings together two distinct yet complementary fields under one roof: architectural design and software engineering. This dual focus ensures that our students and clients benefit from real-world practical skills, modern technology, and concrete problem solving.
+              Skytech unites two distinct disciplines under one shared commitment: architectural design and software engineering. Explore the professional backgrounds and practical philosophies of our leadership below.
             </p>
-          </div>
-
-          {/* Dual Pillars Grid */}
-          <div ref={peopleCardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {/* Pillar 1: Wajid Khan - Architecture & Design */}
-            <div className="pillar-card rounded-2xl bg-white border border-border p-6 sm:p-8 shadow-xs flex flex-col justify-between hover:border-blue/40 transition-all duration-300">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-blue bg-blue/10 px-2.5 py-1 rounded-md">
-                    <Compass className="w-3.5 h-3.5" />
-                    Architecture & Design
-                  </span>
-                  <span className="text-xs font-mono font-semibold text-muted">
-                    7+ Years Exp.
-                  </span>
-                </div>
-
-                <h3 className="text-xl sm:text-2xl font-bold text-navy mb-1">
-                  Wajid Khan
-                </h3>
-                <p className="text-sm font-semibold text-blue mb-4">
-                  Architectural Designer
-                </p>
-
-                <p className="text-xs sm:text-sm text-ink/80 leading-relaxed mb-6">
-                  Leads Skytech’s architectural practice, AutoCAD/BIM education, and 3D visualization studio with 7+ years of hands-on field experience.
-                </p>
-
-                {/* Focus List */}
-                <div className="mb-6">
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted block mb-2">
-                    Focus:
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {[
-                      'Architecture',
-                      'Design',
-                      'Drafting',
-                      'Visualization',
-                      'Practical Design Experience',
-                    ].map((f) => (
-                      <span
-                        key={f}
-                        className="text-xs px-2.5 py-1 rounded-md bg-surface text-navy font-medium border border-border"
-                      >
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <a
-                href="#wajid-khan"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-blue hover:text-navy transition-colors pt-4 border-t border-border"
-              >
-                <span>View Architecture Profile</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-
-            {/* Pillar 2: Muhammad Hamza - Technology & Digital Solutions */}
-            <div className="pillar-card rounded-2xl bg-white border border-border p-6 sm:p-8 shadow-xs flex flex-col justify-between hover:border-blue/40 transition-all duration-300">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-blue bg-blue/10 px-2.5 py-1 rounded-md">
-                    <Code2 className="w-3.5 h-3.5" />
-                    Technology & Digital Solutions
-                  </span>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-navy bg-navy/5 border border-navy/15 px-2 py-0.5 rounded">
-                    Young Entrepreneur
-                  </span>
-                </div>
-
-                <h3 className="text-xl sm:text-2xl font-bold text-navy mb-1">
-                  Muhammad Hamza
-                </h3>
-                <p className="text-sm font-semibold text-blue mb-4">
-                  Full-Stack Developer | Software Engineer
-                </p>
-
-                <p className="text-xs sm:text-sm text-ink/80 leading-relaxed mb-6">
-                  Focuses on turning real-world problems into practical digital solutions using modern full-stack web technologies and an entrepreneurial mindset.
-                </p>
-
-                {/* Focus List */}
-                <div className="mb-6">
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted block mb-2">
-                    Focus:
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {[
-                      'Software Engineering',
-                      'Full-Stack Development',
-                      'Digital Solutions',
-                      'Problem Solving',
-                    ].map((f) => (
-                      <span
-                        key={f}
-                        className="text-xs px-2.5 py-1 rounded-md bg-surface text-navy font-medium border border-border"
-                      >
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <a
-                href="#muhammad-hamza"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-blue hover:text-navy transition-colors pt-4 border-t border-border"
-              >
-                <span>View Technology & Problem-Solving Profile</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
           </div>
         </div>
       </section>

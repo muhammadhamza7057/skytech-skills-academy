@@ -1,25 +1,25 @@
 import { useRef } from 'react'
-import { BookOpen, Clock3, Compass, Target } from 'lucide-react'
+import { Clock3, Users, Target, Compass } from 'lucide-react'
 import { highlights } from '../data/content'
 import FeatureCard from '../components/FeatureCard'
 import SectionHeading from '../components/SectionHeading'
 import { useStaggerCards } from '../utils/motion'
 
-const icons = [BookOpen, Target, Compass, Clock3]
+const icons = [Clock3, Users, Target, Compass]
 
 export default function AcademyHighlights() {
   const gridRef = useRef(null)
   useStaggerCards(gridRef, '.stagger-item')
 
   return (
-    <section className="section-pad bg-white">
+    <section className="section-pad bg-white border-b border-border">
       <div className="container-sky">
         <SectionHeading
-          eyebrow="Academy Highlights"
-          title="Built for practical, career-ready learning"
-          description="Skytech Skills Academy helps learners develop tools and communication skills that matter in studios, offices, and professional pathways."
+          eyebrow="Key Trust Signals"
+          title="Grounded Experience. Real Capabilities."
+          description="Verified facts behind Skytech's training programs and professional design studio across Khyber Pakhtunkhwa."
         />
-        <div ref={gridRef} className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div ref={gridRef} className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((item, index) => (
             <FeatureCard
               key={item.title}

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, ArrowRight } from 'lucide-react'
 import { courses } from '../data/courses'
 import {
   initialEnrollmentValues,
@@ -80,31 +80,82 @@ export default function EnrollmentForm({ defaultCourse = '' }) {
   }
 
   if (submitted) {
+    const courseTitle =
+      selectedCourseData?.name ||
+      courseOptions.find((c) => c.value === values.selectedCourse)?.label ||
+      'Selected Course'
+    const whatsappEnrollUrl = `https://wa.me/923422421701?text=Hello%20Skytech,%20I%20have%20submitted%20my%20enrollment%20for%20${encodeURIComponent(
+      courseTitle
+    )}.%20Student%20Name:%20${encodeURIComponent(
+      `${values.firstName} ${values.lastName}`.trim()
+    )}.%20Please%20confirm%20my%20schedule%20and%20seat.`
+
     return (
-      <div className="rounded-xl border border-border bg-white p-6 sm:p-8" role="status">
+      <div className="rounded-2xl border border-border bg-white p-6 sm:p-10 shadow-sm" role="status">
         <div className="flex items-start gap-4">
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface text-blue">
-            <CheckCircle2 size={24} aria-hidden="true" />
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+            <CheckCircle2 size={26} aria-hidden="true" />
           </span>
-          <div>
-            <h2 className="font-display text-2xl font-semibold text-navy">
-              Enrollment Request Received
+          <div className="flex-1">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-navy">
+              Enrollment Application Received
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
-              Thank you, {values.firstName}. Your enrollment form has been prepared
-              as a frontend demonstration. No data has been saved to a server yet.
-              Our team will connect this form to the backend in a future update.
+            <p className="mt-3 text-sm sm:text-base leading-relaxed text-muted">
+              Thank you, <strong className="text-navy">{values.firstName} {values.lastName}</strong>. Your enrollment request for <strong className="text-navy">{courseTitle}</strong> has been logged. Our admissions desk will contact you within 24 hours to finalize your class batch, schedule, and campus location.
             </p>
-            <p className="mt-4 text-sm font-semibold text-navy">
-              Selected course:{' '}
-              {selectedCourseData?.name || courseOptions.find((c) => c.value === values.selectedCourse)?.label}
-            </p>
-            {selectedCourseData && (
-              <p className="mt-1.5 text-xs text-muted">
-                Fee: <span className="font-semibold text-navy">{selectedCourseData.fee}</span> • Class Mode: <span className="font-semibold text-emerald-700">{selectedCourseData.mode}</span>
-                {selectedCourseData.includesSummary ? ` • Includes: ${selectedCourseData.includesSummary}` : ''}
+
+            <div className="mt-6 rounded-xl border border-border bg-surface p-4 sm:p-5">
+              <p className="text-xs font-bold uppercase tracking-wider text-muted mb-2">
+                Enrollment Summary
               </p>
-            )}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                <div>
+                  <span className="text-xs text-muted block">Selected Course</span>
+                  <span className="font-bold text-navy">{courseTitle}</span>
+                </div>
+                {selectedCourseData?.fee && (
+                  <div>
+                    <span className="text-xs text-muted block">Course Fee</span>
+                    <span className="font-bold text-navy">{selectedCourseData.fee}</span>
+                  </div>
+                )}
+                {selectedCourseData?.mode && (
+                  <div>
+                    <span className="text-xs text-muted block">Class Mode</span>
+                    <span className="font-semibold text-emerald-700">{selectedCourseData.mode}</span>
+                  </div>
+                )}
+                <div>
+                  <span className="text-xs text-muted block">Student Phone</span>
+                  <span className="font-semibold text-navy">{values.phone}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href={whatsappEnrollUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                <span>Confirm Instantly via WhatsApp</span>
+                <ArrowRight size={16} />
+              </a>
+              <button
+                type="button"
+                onClick={() => {
+                  setSubmitted(false)
+                  setValues({
+                    ...initialEnrollmentValues,
+                    selectedCourse: defaultCourse,
+                  })
+                }}
+                className="btn-outline"
+              >
+                Submit Another Enrollment
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,7 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import {
+  ArrowRight,
   Briefcase,
   Building2,
   CheckCircle2,
@@ -230,6 +232,32 @@ export default function About() {
                 Practical, instructor-led training at Adnan Plaza, Dargai
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet the People Behind Skytech Reference Banner */}
+      <section className="bg-white py-10 border-b border-border">
+        <div className="container-sky">
+          <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 hover:border-blue/30 transition-all">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-blue block mb-1">
+                Leadership & Vision
+              </span>
+              <h3 className="text-lg sm:text-xl font-bold text-navy">
+                Meet the People Behind Skytech
+              </h3>
+              <p className="text-xs sm:text-sm text-muted mt-1 max-w-xl">
+                Learn how architectural designer Wajid Khan and full-stack software engineer Muhammad Hamza bring practical design and digital problem solving together.
+              </p>
+            </div>
+            <Link
+              to="/our-story"
+              className="btn-primary shrink-0 text-sm py-2.5 px-5"
+            >
+              <span>Read Our Story</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>

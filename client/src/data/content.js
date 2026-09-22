@@ -51,24 +51,24 @@ export const trustIndicators = [
 
 export const highlights = [
   {
-    title: 'Practical Skill Training',
-    description:
-      'Learn by doing with practical exercises that mirror real workplace tasks and professional engineering workflows.',
-  },
-  {
-    title: 'Career-Focused Courses',
-    description:
-      'Programs designed to help learners build skills that support education goals, freelancing, and direct employment.',
-  },
-  {
-    title: 'Architecture & Design Services',
-    description:
-      'Beyond training, our senior architectural team provides full-cycle architectural planning, 3D visualization, and drafting services.',
-  },
-  {
     title: '7+ Years of Experience',
     description:
-      'With over 7 years of focused technical instruction and regional architectural practice across 3 campus branches.',
+      'Over 7 years of grounded technical instruction and commercial architectural practice across 3 campus branches.',
+  },
+  {
+    title: '1000+ Students Trained',
+    description:
+      'Learners developing usable capabilities for employment, freelancing platforms, and engineering studies.',
+  },
+  {
+    title: 'Practical Skill Development',
+    description:
+      'Hands-on software mastery and project execution that mirrors real workplace standards.',
+  },
+  {
+    title: 'Professional Architecture & Design',
+    description:
+      'Full-cycle architectural planning, working drawings, 3D visualization, and digital solutions.',
   },
 ]
 
@@ -308,9 +308,9 @@ export const hamzaInfo = {
     'Problem Solving',
   ],
   description:
-    'Muhammad Hamza is a Full-Stack Developer, Software Engineer, and young entrepreneur focused on turning real-world problems into practical digital solutions. He works across modern web technologies to design, develop, and improve software that helps businesses, organizations, and individuals solve problems more efficiently.',
+    'Muhammad Hamza is a Full-Stack Developer, Software Engineer, and young entrepreneur focused on turning real-world problems into practical digital solutions. His work combines software engineering, full-stack web development, and an entrepreneurial mindset to design and build useful digital products and services.',
   supportingStatement:
-    'His approach combines software engineering, problem-solving, and an entrepreneurial mindset — from understanding a problem to designing, developing, and delivering a practical solution.',
+    'From understanding a problem to planning, building, and improving a solution, his approach focuses on using technology where it can create practical value.',
   entrepreneurialMindset:
     'Combining technology with an entrepreneurial mindset to identify opportunities, solve practical problems, and turn ideas into useful digital products and services.',
   capabilitiesTitle: 'From Problems to Practical Solutions',
