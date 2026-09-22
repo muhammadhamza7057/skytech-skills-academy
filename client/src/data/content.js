@@ -301,6 +301,9 @@ export const hamzaInfo = {
   name: 'Muhammad Hamza',
   primaryRole: 'Full-Stack Developer | Software Engineer',
   secondaryLabel: 'Young Entrepreneur',
+  phone: '0342-7057124',
+  phoneHref: 'tel:03427057124',
+  whatsappHref: 'https://wa.me/923422421701',
   focus: [
     'Software Engineering',
     'Full-Stack Development',

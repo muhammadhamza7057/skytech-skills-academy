@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import hamzaImage from '../assets/Hamza.png'
-import { hamzaInfo, academyInfo } from '../data/content'
+import { hamzaInfo } from '../data/content'
+import { WhatsAppIcon } from './BrandIcons'
 import { useImageReveal, useScrollReveal, useStaggerCards } from '../utils/motion'
 import {
   Code2,
@@ -11,7 +12,7 @@ import {
   CheckCircle2,
   ArrowRight,
   TrendingUp,
-  MessageSquare,
+  Phone,
   Sparkles,
 } from 'lucide-react'
 
@@ -159,22 +160,26 @@ export default function HamzaSection({ className = '', id = 'muhammad-hamza' }) 
               </p>
             </div>
 
-            {/* Quick Actions / Contact */}
-            <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border">
+            {/* Direct Contact & WhatsApp Discussion CTA */}
+            <div className="pt-5 border-t border-border flex flex-col items-start gap-3.5">
               <a
-                href={academyInfo.whatsappHref}
+                href={hamzaInfo.phoneHref}
+                className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-navy hover:text-blue transition-colors group"
+                aria-label={`Call Muhammad Hamza at ${hamzaInfo.phone}`}
+              >
+                <Phone className="w-4 h-4 text-blue shrink-0 group-hover:scale-110 transition-transform" aria-hidden="true" />
+                <span className="tracking-wide">{hamzaInfo.phone}</span>
+              </a>
+
+              <a
+                href={hamzaInfo.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary text-xs sm:text-sm py-2.5 px-4 sm:px-5"
+                aria-label={`Discuss a Digital Project with Muhammad Hamza on WhatsApp (${hamzaInfo.phone})`}
+                className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-sm sm:text-[15px] shadow-xs hover:shadow transition-all duration-200 active:scale-[0.98] w-full sm:w-auto"
               >
-                <MessageSquare className="w-4 h-4" />
-                Discuss a Digital Project
-              </a>
-              <a
-                href="/courses?category=Web%20%26%20IT"
-                className="btn-outline text-xs sm:text-sm py-2.5 px-4 sm:px-5"
-              >
-                Explore Web & IT Courses
+                <WhatsAppIcon size={19} className="text-white shrink-0" />
+                <span>Discuss a Digital Project</span>
               </a>
             </div>
           </div>
