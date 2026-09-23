@@ -42,8 +42,8 @@ export default function CampusesSection({ className = '', lightBackground = fals
                   isLastOnTablet ? 'md:col-span-2 lg:col-span-1 md:max-w-lg md:w-full md:mx-auto lg:max-w-none' : ''
                 } ${
                   campus.isMain
-                    ? 'border-[#C5D5E8] border-t-4 border-t-navy hover:border-blue/50'
-                    : 'border-[#D8E2EF] border-t-4 border-t-transparent hover:border-blue/40'
+                    ? 'border-[#C5D5E8] border-t-4  hover:border-blue/50'
+                    : 'border-[#D8E2EF] border-t-4  hover:border-blue/40'
                 }`}
               >
                 <div className="flex-1 flex flex-col">
@@ -53,11 +53,6 @@ export default function CampusesSection({ className = '', lightBackground = fals
                       <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-[#F1F5F9] text-navy border border-[#E2E8F0]">
                         Branch {campus.branchNumber}
                       </span>
-                      {campus.isMain && (
-                        <span className="text-[11px] font-bold tracking-wide uppercase px-2 py-0.5 rounded bg-[#EAF2FB] text-[#1557A6] border border-[#D0E2F7]">
-                          PRIMARY HQ
-                        </span>
-                      )}
                     </div>
                     <span className="text-xs font-medium text-[#64748B]">
                       {campus.badge}
@@ -65,7 +60,7 @@ export default function CampusesSection({ className = '', lightBackground = fals
                   </div>
 
                   {/* Campus Title */}
-                  <h3 className="text-lg sm:text-xl font-bold text-navy mb-3 flex items-center gap-2.5">
+                  <h3 className="text-lg sm:text-xl font-bold text-navy  mb-3 flex items-center gap-2.5">
                     <Building2 className="w-5 h-5 text-blue shrink-0" aria-hidden="true" />
                     <span>
                       {campus.name} — {campus.city}
