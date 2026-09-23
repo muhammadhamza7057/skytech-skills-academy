@@ -19,29 +19,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const progressRef = useRef(null)
 
-  useEffect(() => {
-    let ticking = false
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 8)
+  
 
-          if (progressRef.current) {
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight
-            const progress = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0
-            progressRef.current.style.transform = `scaleX(${progress})`
-          }
-
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
+   
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => {
@@ -66,12 +46,7 @@ export default function Navbar() {
           : 'shadow-none'
       )}
     >
-      {/* 2px Scroll Progress Bar */}
-      <div
-        ref={progressRef}
-        className="scroll-progress-bar"
-        aria-hidden="true"
-      />
+     
 
       <div className="container-sky grid h-16 grid-cols-[1fr_auto] items-center gap-3 lg:h-[76px] lg:grid-cols-[auto_1fr_auto]">
         <Link
