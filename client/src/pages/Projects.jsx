@@ -32,10 +32,7 @@ export default function Projects() {
 
         <div className="container-sky relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue/25 border border-blue/40 text-xs font-semibold text-blue-light mb-5">
-              <Sparkles className="w-3.5 h-3.5" />
-              Design Studio & Technical Portfolio
-            </div>
+            
 
             <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-5 leading-tight">
               Architectural Works & Project Showcase

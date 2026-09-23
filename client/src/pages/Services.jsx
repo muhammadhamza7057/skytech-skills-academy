@@ -47,10 +47,7 @@ export default function Services() {
 
         <div className="container-sky relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue/25 border border-blue/40 text-xs font-semibold text-blue-light mb-6">
-              <Sparkles className="w-3.5 h-3.5" />
-              Dual-Platform Practice: Academy & Design Studio
-            </div>
+            
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
               Architectural Design, 2D Drafting & 3D Visualization Services
